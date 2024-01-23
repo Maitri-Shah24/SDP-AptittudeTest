@@ -1,0 +1,835 @@
+{
+    "Logical Reasoning": [
+      { "id": 1, 
+        "ques": "Look at this series: 7, 10, 8, 11, 9, 12, ... What number should come next?",
+        "op1":"7", 
+        "op2":"10", 
+        "op3":"12", 
+        "op4":"13", 
+        "ans":"10"
+      },
+      { "id": 2, 
+        "ques": "Look at this series: 8, 6, 9, 23, 87 , ... What number should come next?", 
+        "op1":"128", 
+        "op2":"226", 
+        "op3":"324", 
+        "op4":"429", 
+        "ans":"429" 
+      },
+      { "id": 3, 
+        "ques": "QAR, RAS, SAT, TAU, _____", 
+        "op1":"UAV", 
+        "op2":"UAT", 
+        "op3":"TAS", 
+        "op4":"TAT",
+        "ans":"UAV"
+      },
+      { "id": 4, 
+        "ques": "An Informal Gathering occurs when a group of people get together in a casual, relaxed manner. Which situation below is the best example of an Informal Gathering?", 
+        "op1":"The book club meets on the first Thursday evening of every month.",
+        "op2":"After finding out about his promotion, Jeremy and a few coworkers decide to go out for a quick drink after work.", 
+        "op3":"Mary sends out 25 invitations for the bridal shower she is giving for her sister.", 
+        "op4":"Whenever she eats at the Mexican restaurant, Clara seems to run into Peter.", 
+        "ans":"After finding out about his promotion, Jeremy and a few coworkers decide to go out for a quick drink after work." },
+      {
+        "id": 5,
+        "ques": "If every cat has a tail, and Fluffy is a cat, what can we conclude?",
+        "op1": "Fluffy has a tail",
+        "op2": "Fluffy is a dog",
+        "op3": "Fluffy is tailless",
+        "op4": "Fluffy is a bird",
+        "ans": "Fluffy has a tail"
+      },
+      
+      {
+        "id": 6,
+        "ques": "If every car has wheels, and this vehicle is a car, what can we conclude?",
+        "op1": "This vehicle has wheels",
+        "op2": "This vehicle does not have wheels",
+        "op3": "Not all cars have wheels",
+        "op4": "This vehicle is a bicycle",
+        "ans": "This vehicle has wheels"
+      },
+      {
+        "id": 7,
+        "ques": "Identify the pattern in the series: 4, 7, 11, 16, ...",
+        "op1": "Add 1",
+        "op2": "Add 2",
+        "op3": "Add 3",
+        "op4": "Add 4",
+        "ans": "Add 5"
+      },
+      {
+        "id": 8,
+        "ques": "What is the next number in the series: 18, 16, 14, 12, ...?",
+        "op1": "9",
+        "op2": "10",
+        "op3": "11",
+        "op4": "8",
+        "ans": "10"
+      },
+      {
+        "id": 9,
+        "ques": "Identify the pattern in the series: B, C, E, H, ...",
+        "op1": "Add 1",
+        "op2": "Subtract 1",
+        "op3": "Add 2",
+        "op4": "Subtract 2",
+        "ans": "Add 2"
+      },
+      {
+        "id": 10,
+        "ques": "What is the next letter in the series: P, R, T, V, ...?",
+        "op1": "W",
+        "op2": "U",
+        "op3": "X",
+        "op4": "S",
+        "ans": "X"
+      }
+    ],
+
+    "Verbal Reasoning":[ 
+    {
+      "id": 1,
+      "ques": "Arrange the words given below in a meaningful sequence.  Key, Door, Loc, Room, Switch on",
+      "op1": "5, 1, 2, 4, 3",
+      "op2": "4, 2, 1, 5, 3",
+      "op3": "1, 3, 2, 4, 5",
+      "op4": "1, 2, 3, 5, 4",
+      "ans": "1, 3, 2, 4, 5"
+    },
+    {
+      "id": 2,
+      "ques": "If A + B means A is the mother of B; A - B means A is the brother of B; A % B means A is the father of B and A x B means A is the sister of B, which of the following shows that P is the maternal uncle of Q?",
+      "op1": "Q - N + M x P",
+      "op2": "P + S x N - Q",
+      "op3": "P - M + N x Q",
+      "op4": "Q - S % P",
+      "ans": "P - M + N x Q"
+    },
+    {
+      "id": 3,
+      "ques": "Introducing a boy, a girl said, 'He is the son of the daughter of the father of my uncle.' How is the boy related to the girl?",
+      "op1": "Brother",
+      "op2": "Nephew",
+      "op3": "Uncle",
+      "op4": "Son-in-law",
+      "ans": "Brother"
+    },
+    {
+      "id": 4,
+      "ques": "If X + Y means X is the daughter of Y; X - Y means X is the brother of Y; X % Y means X is the father of Y and X x Y means X is the sister of Y. Which of the following means I is the niece of J?",
+      "op1": "J - N % C x I",
+      "op2": "I x C - N % J",
+      "op3": "J + M x C % I",
+      "op4": "I x C + N - J",
+      "ans": "I x C - N % J"
+    },
+    {
+      "id": 6,
+      "ques": "Which one of the following is always found in 'Bravery'?",
+      "op1": "Experience",
+      "op2": "Power",
+      "op3": "Courage",
+      "op4": "Knowledge",
+      "ans": "Courage"
+    },
+    {
+      "id": 7,
+      "ques": "What is found necessarily in newspaper?",
+      "op1": "Date",
+      "op2": "Advertisement",
+      "op3": "News",
+      "op4": "Editor",
+      "ans": "News"
+    },
+    {
+      "id": 8,
+      "ques": "CUP : LIP :: BIRD : ?",
+      "op1": "BUSH",
+      "op2": "GRASS",
+      "op3": "FOREST",
+      "op4": "BEAK",
+      "ans": "BEAK"
+    },
+    {
+      "id": 9,
+      "ques": "Physician : Treatment :: Judge : ?",
+      "op1": "Punishment",
+      "op2": "Judgement",
+      "op3": "Lawyer",
+      "op4": "Court",
+      "ans": "Judgement"
+    },
+    {
+      "id": 10,
+      "ques": "Choose the word which is different from the rest.",
+      "op1": "Assassinate",
+      "op2": "Kill",
+      "op3": "Kidnap",
+      "op4": "Stab",
+      "ans": "Kidnap"
+    },
+    {
+      "id": 11,
+      "ques": "Choose the word which is different from the rest.",
+      "op1": "Giraffe",
+      "op2": "Hyena",
+      "op3": "Deer",
+      "op4": "Rhinoceros",
+      "ans": "Hyena"
+    }
+  ],
+    "Arithmetic Aptitude":[
+      {
+        "id": 1,
+        "ques": "An aeroplane covers a certain distance at a speed of 240 kmph in 5 hours. To cover the same distance in 1 hour, it must travel at a speed of:",
+        "op1": "300 kmph",
+        "op2": "360 kmph",
+        "op3": "600 kmph",
+        "op4": "720 kmph",
+        "ans": "720 kmph"
+      },
+      {
+        "id": 2,
+        "ques": "What will be the day of the week 15th August, 2010?",
+        "op1": "Sunday",
+        "op2": "Monday",
+        "op3": "Tuesday",
+        "op4": "Friday",
+        "ans": "Sunday"
+      },
+      {
+        "id": 3,
+        "ques": "A man standing at a point P is watching the top of a tower, which makes an angle of elevation of 30° with the man's eye. The man walks some distance towards the tower to watch its top, and the angle of the elevation becomes 60°. What is the distance between the base of the tower and the point P?",
+        "op1": "43 units",
+        "op2": "8 units",
+        "op3": "12 units",
+        "op4": "Data inadequate",
+        "ans": "12 units"
+      },
+      {
+        "id": 4,
+        "ques": "A man purchased a cow for Rs. 3000 and sold it the same day for Rs. 3600, allowing the buyer a credit of 2 years. If the rate of interest be 10% per annum, then the man has a gain of:",
+        "op1": "0%",
+        "op2": "5%",
+        "op3": "7.5%",
+        "op4": "10%",
+        "ans": "7.5%"
+      },
+      {
+        "id": 5,
+        "ques": "Find the greatest number that will divide 43, 91, and 183 so as to leave the same remainder in each case.",
+        "op1": "4",
+        "op2": "7",
+        "op3": "9",
+        "op4": "13",
+        "ans": "4"
+      },
+      {
+        "id": 6,
+        "ques": "A bank offers 5% compound interest calculated on a half-yearly basis. A customer deposits Rs. 1600 each on 1st January and 1st July of a year. At the end of the year, the amount he would have gained by way of interest is:",
+        "op1": "Rs. 120",
+        "op2": "Rs. 121",
+        "op3": "Rs. 122",
+        "op4": "Rs. 123",
+        "ans": "Rs. 123"
+      },
+      {
+        "id": 7,
+        "ques": "A boat can travel with a speed of 13 km/hr in still water. If the speed of the stream is 4 km/hr, find the time taken by the boat to go 68 km downstream.",
+        "op1": "2 hours",
+        "op2": "3 hours",
+        "op3": "4 hours",
+        "op4": "5 hours",
+        "ans": "4 hours"
+      },
+      {
+        "id": 8,
+        "ques": "Two numbers are respectively 20% and 50% more than a third number. The ratio of the two numbers is:",
+        "op1": "2 : 5",
+        "op2": "3 : 5",
+        "op3": "4 : 5",
+        "op4": "6 : 7",
+        "ans": "3 : 5"
+      },
+      {
+        "id": 9,
+        "ques": "In a 100 m race, A can give B 10 m and C 28 m. In the same race B can give C:",
+        "op1": "18 m",
+        "op2": "20 m",
+        "op3": "27 m",
+        "op4": "9 m",
+        "ans": "9 m"
+      },
+      {
+        "id": 10,
+        "ques": "An accurate clock shows 8 o'clock in the morning. Through how many degrees will the hour hand rotate when the clock shows 2 o'clock in the afternoon?",
+        "op1": "144°",
+        "op2": "150°",
+        "op3": "168°",
+        "op4": "180°",
+        "ans": "168°"
+      }
+    ]
+    ,
+    "C":[
+      {
+        "id": 1,
+        "ques": "What are the types of linkages?",
+        "op1": "Internal and External",
+        "op2": "External, Internal and None",
+        "op3": "External and None",
+        "op4": "Internal",
+        "ans": "External, Internal and None"
+      },
+      {
+        "id": 2,
+        "ques": "Which of the following cannot be checked in a switch-case statement?",
+        "op1": "Character",
+        "op2": "Integer",
+        "op3": "Float",
+        "op4": "enum",
+        "ans": "Float"
+      },
+      {
+        "id": 3,
+        "ques": "What is (void*)0?",
+        "op1": "Representation of NULL pointer",
+        "op2": "Representation of void pointer",
+        "op3": "Error",
+        "op4": "None of above",
+        "ans": "Representation of NULL pointer"
+      },
+      {
+        "id": 4,
+        "ques": "In which header file is the NULL macro defined?",
+        "op1": "stdio.h",
+        "op2": "stddef.h",
+        "op3": "stdio.h and stddef.h",
+        "op4": "math.h",
+        "ans": "stddef.h"
+      },
+      {
+        "id": 5,
+        "ques": "If a variable is a pointer to a structure, then which of the following operator is used to access data members of the structure through the pointer variable?",
+        "op1": ".",
+        "op2": "&",
+        "op3": "*",
+        "op4": "->",
+        "ans": "->"
+      },
+      {
+        "id": 6,
+        "ques": "What will happen if in a C program you assign a value to an array element whose subscript exceeds the size of the array?",
+        "op1": "The element will be set to 0.",
+        "op2": "The compiler would report an error.",
+        "op3": "The program may crash if some important data gets overwritten.",
+        "op4": "The array size would appropriately grow.",
+        "ans": "The program may crash if some important data gets overwritten."
+      },
+      {
+        "id": 7,
+        "ques": "What does the following declaration mean?\nint (*ptr)[10];",
+        "op1": "ptr is array of pointers to 10 integers",
+        "op2": "ptr is a pointer to an array of 10 integers",
+        "op3": "ptr is an array of 10 integers",
+        "op4": "ptr is a pointer to array",
+        "ans": "ptr is a pointer to an array of 10 integers"
+      },
+      {
+        "id": 8,
+        "ques": "In C, if you pass an array as an argument to a function, what actually gets passed?",
+        "op1": "Value of elements in array",
+        "op2": "First element of the array",
+        "op3": "Base address of the array",
+        "op4": "Address of the last element of array",
+        "ans": "Base address of the array"
+      },
+      {
+        "id": 9,
+        "ques": "What will the function rewind() do?",
+        "op1": "Reposition the file pointer to a character reverse.",
+        "op2": "Reposition the file pointer stream to end of file.",
+        "op3": "Reposition the file pointer to the beginning of that line.",
+        "op4": "Reposition the file pointer to the beginning of the file.",
+        "ans": "Reposition the file pointer to the beginning of the file."
+      }
+    ]
+    ,
+    "C++":[
+      {
+        "id": 1,
+        "ques": "Which of the following type of class allows only one object of it to be created?",
+        "op1": "Virtual class",
+        "op2": "Abstract class",
+        "op3": "Singleton class",
+        "op4": "Friend class",
+        "ans": "Singleton class"
+      },
+      {
+        "id": 2,
+        "ques": "Which of the following statement is correct?",
+        "op1": "Class is an instance of an object.",
+        "op2": "Object is an instance of a class.",
+        "op3": "Class is an instance of a data type.",
+        "op4": "Object is an instance of a data type.",
+        "ans": "Object is an instance of a class."
+      },
+      {
+        "id": 3,
+        "ques": "Which of the following provides a reuse mechanism?",
+        "op1": "Abstraction",
+        "op2": "Inheritance",
+        "op3": "Dynamic binding",
+        "op4": "Encapsulation",
+        "ans": "Inheritance"
+      },
+      {
+        "id": 4,
+        "ques": "Which of the following statements is correct in C++?",
+        "op1": "Classes cannot have data as protected members.",
+        "op2": "Structures can have functions as members.",
+        "op3": "Class members are public by default.",
+        "op4": "Structure members are private by default.",
+        "ans": "Structure members are private by default."
+      },
+      {
+        "id": 5,
+        "ques": "What happens when we try to compile the class definition in the following code snippet?\nclass Birds {};\nclass Peacock : protected Birds {};",
+        "op1": "It will not compile because the class body of Birds is not defined.",
+        "op2": "It will not compile because the class body of Peacock is not defined.",
+        "op3": "It will not compile because a class cannot be protectedly inherited from another class.",
+        "op4": "It will compile successfully.",
+        "ans": "It will compile successfully."
+      },
+      {
+        "id": 6,
+        "ques": "How can we make a class abstract?",
+        "op1": "By making all member functions constant.",
+        "op2": "By making at least one member function as a pure virtual function.",
+        "op3": "By declaring it abstract using the static keyword.",
+        "op4": "By declaring it abstract using the virtual keyword.",
+        "ans": "By making at least one member function as a pure virtual function."
+      },
+      {
+        "id": 7,
+        "ques": "Which of the following statements is correct regarding the destructor of the base class?",
+        "op1": "Destructor of the base class should always be static.",
+        "op2": "Destructor of the base class should always be virtual.",
+        "op3": "Destructor of the base class should not be virtual.",
+        "op4": "Destructor of the base class should always be private.",
+        "ans": "Destructor of the base class should always be virtual."
+      },
+      {
+        "id": 8,
+        "ques": "Which of the following function prototypes is perfectly acceptable?",
+        "op1": "int Function(int Tmp = Show());",
+        "op2": "float Function(int Tmp = Show(int, float));",
+        "op3": "Both A and B.",
+        "op4": "float = Show(int, float) Function(Tmp);",
+        "ans": "Both A and B."
+      },
+      {
+        "id": 9,
+        "ques": "Which of the following function / types of function cannot have default parameters?",
+        "op1": "Member function of class",
+        "op2": "main()",
+        "op3": "Member function of structure",
+        "op4": "Both B and C",
+        "ans": "Both B and C"
+      },
+      {
+        "id": 10,
+        "ques": "Which one of the following options is correct?",
+        "op1": "Friend function can access public data members of the class.",
+        "op2": "Friend function can access protected data members of the class.",
+        "op3": "Friend function can access private data members of the class.",
+        "op4": "All of the above.",
+        "ans": "All of the above."
+      }
+    ]
+    ,
+    "Java":[
+      {
+        "id": 1,
+        "ques": "Which will legally declare, construct, and initialize an array?",
+        "op1": "int [] myList = {\"1\", \"2\", \"3\"};",
+        "op2": "int [] myList = (5, 8, 2);",
+        "op3": "int myList [] [] = {4,9,7,0};",
+        "op4": "int myList [] = {4, 3, 7};",
+        "ans": "int myList [] = {4, 3, 7};"
+      },
+      {
+        "id": 2,
+        "ques": "Which is a reserved word in the Java programming language?",
+        "op1": "method",
+        "op2": "native",
+        "op3": "subclasses",
+        "op4": "reference",
+        "ans": "native"
+      },
+      {
+        "id": 3,
+        "ques": "Which is a valid keyword in Java?",
+        "op1": "interface",
+        "op2": "string",
+        "op3": "Float",
+        "op4": "unsigned",
+        "ans": "interface"
+      },
+      {
+        "id": 4,
+        "ques": "Which is a valid declaration of a String?",
+        "op1": "String s1 = null;",
+        "op2": "String s2 = 'null';",
+        "op3": "String s3 = (String) 'abc';",
+        "op4": "String s4 = (String) '\\ufeed';",
+        "ans": "String s1 = null;"
+      },
+      {
+        "id": 5,
+        "ques": "What is the name of the method used to start a thread execution?",
+        "op1": "init();",
+        "op2": "start();",
+        "op3": "run();",
+        "op4": "resume();",
+        "ans": "start();"
+      },
+      {
+        "id": 6,
+        "ques": "Which cannot directly cause a thread to stop executing?",
+        "op1": "Calling the SetPriority() method on a Thread object.",
+        "op2": "Calling the wait() method on an object.",
+        "op3": "Calling notify() method on an object.",
+        "op4": "Calling read() method on an InputStream object.",
+        "ans": "Calling read() method on an InputStream object."
+      },
+      {
+        "id": 7,
+        "ques": "Assume the following method is properly synchronized and called from a thread A on an object B:\nwait(2000);\nAfter calling this method, when will the thread A become a candidate to get another turn at the CPU?",
+        "op1": "After thread A is notified, or after two seconds.",
+        "op2": "After the lock on B is released, or after two seconds.",
+        "op3": "Two seconds after thread A is notified.",
+        "op4": "Two seconds after lock B is released.",
+        "ans": "Two seconds after lock B is released."
+      },
+      {
+        "id": 8,
+        "ques": "Which class or interface defines the wait(), notify(), and notifyAll() methods?",
+        "op1": "Object",
+        "op2": "Thread",
+        "op3": "Runnable",
+        "op4": "Class",
+        "ans": "Object"
+      },
+      {
+        "id": 9,
+        "ques": "Which of the following would compile without error?",
+        "op1": "int a = Math.abs(-5);",
+        "op2": "int b = Math.abs(5.0);",
+        "op3": "int c = Math.abs(5.5F);",
+        "op4": "int d = Math.abs(5L);",
+        "ans": "int a = Math.abs(-5);"
+      },
+      {
+        "id": 10,
+        "ques": "Which one of these lists contains only Java programming language keywords?",
+        "op1": "class, if, void, long, Int, continue",
+        "op2": "goto, instanceof, native, finally, default, throws",
+        "op3": "try, virtual, throw, final, volatile, transient",
+        "op4": "strictfp, constant, super, implements, do",
+        "ans": "goto, instanceof, native, finally, default, throws"
+      },
+      {
+        "id": 11,
+        "ques": "Which one of the following will declare an array and initialize it with five numbers?",
+        "op1": "Array a = new Array(5);",
+        "op2": "int [] a = {23,22,21,20,19};",
+        "op3": "int a [] = new int[5];",
+        "op4": "int [5] array;",
+        "ans": "int [] a = {23,22,21,20,19};"
+      }
+    ]
+    ,
+    "Python":[
+      {
+        "id": 1,
+        "ques": "What is the correct way to check if a key exists in a Python dictionary?",
+        "op1": "'key' in my_dict",
+        "op2": "my_dict.contains('key')",
+        "op3": "my_dict.has_key('key')",
+        "op4": "my_dict.exists('key')",
+        "ans": "'key' in my_dict"
+      },
+      {
+        "id": 2,
+        "ques": "How do you open a file named 'data.txt' for writing in Python?",
+        "op1": "file = open('data.txt', 'r')",
+        "op2": "file = open('data.txt', 'w')",
+        "op3": "file = open('data.txt', 'a')",
+        "op4": "file = open('data.txt', 'wb')",
+        "ans": "file = open('data.txt', 'w')"
+      },
+      {
+        "id": 3,
+        "ques": "Which of the following is a valid way to define a function in Python?",
+        "op1": "def function_name:",
+        "op2": "function function_name():",
+        "op3": "function_name = def():",
+        "op4": "def function_name():",
+        "ans": "def function_name():"
+      },
+      {
+        "id": 4,
+        "ques": "What is the purpose of the 'pass' statement in Python?",
+        "op1": "It signifies the end of a code block.",
+        "op2": "It indicates a placeholder where code will go.",
+        "op3": "It raises an exception.",
+        "op4": "It skips the rest of the loop and continues with the next iteration.",
+        "ans": "It indicates a placeholder where code will go."
+      },
+      {
+        "id": 5,
+        "ques": "Which of the following is used to represent a multi-line string in Python?",
+        "op1": "single quotes ('')",
+        "op2": "double quotes (\"\")",
+        "op3": "triple single quotes (''')",
+        "op4": "triple double quotes (\"\"\")",
+        "ans": "triple double quotes (\"\"\")"
+      },
+      {
+        "id": 6,
+        "ques": "What does the 'break' statement do in a loop?",
+        "op1": "It exits the loop and transfers control to the next iteration.",
+        "op2": "It terminates the program.",
+        "op3": "It skips the current iteration and continues with the next one.",
+        "op4": "It exits the loop entirely.",
+        "ans": "It exits the loop entirely."
+      },
+      {
+        "id": 7,
+        "ques": "What will be the output of the following code snippet?",
+        "code": "print(list(range(5)))",
+        "op1": "[0, 1, 2, 3, 4]",
+        "op2": "[1, 2, 3, 4, 5]",
+        "op3": "(0, 1, 2, 3, 4)",
+        "op4": "0, 1, 2, 3, 4",
+        "ans": "[0, 1, 2, 3, 4]"
+      },
+      {
+        "id": 8,
+        "ques": "Which of the following is not a valid data type in Python?",
+        "op1": "float",
+        "op2": "char",
+        "op3": "tuple",
+        "op4": "list",
+        "ans": "char"
+      },
+      {
+        "id": 9,
+        "ques": "What is the purpose of the 'finally' block in a try-except statement?",
+        "op1": "To handle exceptions",
+        "op2": "To define the code that will always be executed, whether an exception occurs or not",
+        "op3": "To catch specific exceptions",
+        "op4": "To terminate the program",
+        "ans": "To define the code that will always be executed, whether an exception occurs or not"
+      },
+      {
+        "id": 10,
+        "ques": "In Python, what is the purpose of the 'pass' statement?",
+        "op1": "To break out of a loop",
+        "op2": "To continue to the next iteration of a loop",
+        "op3": "To do nothing and act as a placeholder",
+        "op4": "To raise an exception",
+        "ans": "To do nothing and act as a placeholder"
+      },
+      {
+        "id": 11,
+        "ques": "What does the 'with' statement do in Python?",
+        "op1": "It is used for iteration",
+        "op2": "It is used for exception handling",
+        "op3": "It is used for file handling",
+        "op4": "It is used for creating class instances",
+        "ans": "It is used for file handling"
+      }
+    ]
+    ,
+    "Database":[
+      {
+        "id": 1,
+        "ques": "You can add a row using SQL in a database with which of the following?",
+        "op1": "ADD",
+        "op2": "CREATE",
+        "op3": "INSERT",
+        "op4": "MAKE",
+        "ans": "INSERT"
+      },
+      {
+        "id": 2,
+        "ques": "The command to remove rows from a table 'CUSTOMER' is:",
+        "op1": "REMOVE FROM CUSTOMER ...",
+        "op2": "DROP FROM CUSTOMER ...",
+        "op3": "DELETE FROM CUSTOMER WHERE ...",
+        "op4": "UPDATE FROM CUSTOMER ..",
+        "ans": "DELETE FROM CUSTOMER WHERE ..."
+      },
+      {
+        "id": 3,
+        "ques": "SQL is:",
+        "op1": "a programming language.",
+        "op2": "an operating system.",
+        "op3": "a data sublanguage.",
+        "op4": "a DBMS.",
+        "ans": "a data sublanguage."
+      },
+      {
+        "id": 4,
+        "ques": "A subquery in an SQL SELECT statement:",
+        "op1": "can only be used with two tables.",
+        "op2": "can always be duplicated by a join.",
+        "op3": "has a distinct form that cannot be duplicated by a join.",
+        "op4": "cannot have its results sorted using ORDER BY.",
+        "ans": "can always be duplicated by a join."
+      },
+      {
+        "id": 5,
+        "ques": "To define what columns should be displayed in an SQL SELECT statement:",
+        "op1": "use FROM to name the source table(s) and list the columns to be shown after SELECT.",
+        "op2": "use USING to name the source table(s) and list the columns to be shown after SELECT.",
+        "op3": "use SELECT to name the source table(s) and list the columns to be shown after USING.",
+        "op4": "use USING to name the source table(s) and list the columns to be shown after WHERE.",
+        "ans": "use FROM to name the source table(s) and list the columns to be shown after SELECT."
+      },
+      {
+        "id": 6,
+        "ques": "The SQL statement that queries or reads data from a table is ________ .",
+        "op1": "SELECT",
+        "op2": "READ",
+        "op3": "QUERY",
+        "op4": "None of the above is correct.",
+        "ans": "SELECT"
+      },
+      {
+        "id": 7,
+        "ques": "Where is metadata stored in MySQL?",
+        "op1": "In the MySQL database metadata",
+        "op2": "In the MySQL database metasql",
+        "op3": "In the MySQL database mysql",
+        "op4": "None of the above is correct.",
+        "ans": "In the MySQL database mysql"
+      },
+      {
+        "id": 8,
+        "ques": "Which of the following indicates the maximum number of entities that can be involved in a relationship?",
+        "op1": "Minimum cardinality",
+        "op2": "Maximum cardinality",
+        "op3": "ERD",
+        "op4": "Greater Entity Count (GEC)",
+        "ans": "Maximum cardinality"
+      },
+      {
+        "id": 9,
+        "ques": "In a one-to-many relationship, the entity that is on the one side of the relationship is called a(n) ________ entity.",
+        "op1": "parent",
+        "op2": "child",
+        "op3": "instance",
+        "op4": "subtype",
+        "ans": "parent"
+      },
+      {
+        "id": 10,
+        "ques": "A recursive relationship is a relationship between an entity and ________ .",
+        "op1": "itself",
+        "op2": "a subtype entity",
+        "op3": "an archetype entity",
+        "op4": "an instance entity",
+        "ans": "itself"
+      }
+    ]
+    ,
+    "Networking":[
+      {
+        "id": 1,
+        "ques": "What layer in the TCP/IP stack is equivalent to the Transport layer of the OSI model?",
+        "op1": "Application",
+        "op2": "Host-to-Host",
+        "op3": "Internet",
+        "op4": "Network Access",
+        "ans": "Host-to-Host"
+      },
+      {
+        "id": 2,
+        "ques": "You want to implement a mechanism that automates the IP configuration, including IP address, subnet mask, default gateway, and DNS information. Which protocol will you use to accomplish this?",
+        "op1": "SMTP",
+        "op2": "SNMP",
+        "op3": "DHCP",
+        "op4": "ARP",
+        "ans": "DHCP"
+      },
+      {
+        "id": 3,
+        "ques": "Which of the following is a private IP address?",
+        "op1": "12.0.0.1",
+        "op2": "168.172.19.39",
+        "op3": "172.15.14.36",
+        "op4": "192.168.24.43",
+        "ans": "192.168.24.43"
+      },
+      {
+        "id": 4,
+        "ques": "What protocol is used to find the hardware address of a local device?",
+        "op1": "RARP",
+        "op2": "ARP",
+        "op3": "IP",
+        "op4": "ICMP",
+        "ans": "ARP"
+      },
+      {
+        "id": 5,
+        "ques": "What is the maximum number of IP addresses that can be assigned to hosts on a local subnet that uses the 255.255.255.224 subnet mask?",
+        "op1": "14",
+        "op2": "15",
+        "op3": "16",
+        "op4": "30",
+        "ans": "30"
+      },
+      {
+        "id": 6,
+        "ques": "You need to subnet a network that has 5 subnets, each with at least 16 hosts. Which classful subnet mask would you use?",
+        "op1": "255.255.255.192",
+        "op2": "255.255.255.224",
+        "op3": "255.255.255.240",
+        "op4": "255.255.255.248",
+        "ans": "255.255.255.240"
+      },
+      {
+        "id": 7,
+        "ques": "Which configuration command must be in effect to allow the use of 8 subnets if the Class C subnet mask is 255.255.255.224?",
+        "op1": "Router(config)#ip classless",
+        "op2": "Router(config)#no ip classful",
+        "op3": "Router(config)#ip unnumbered",
+        "op4": "Router(config)#ip subnet-zero",
+        "ans": "Router(config)#ip subnet-zero"
+      },
+      {
+        "id": 8,
+        "ques": "Which command displays RIP routing updates?",
+        "op1": "show ip route",
+        "op2": "debug ip rip",
+        "op3": "show protocols",
+        "op4": "debug ip route",
+        "ans": "debug ip rip"
+      },
+      {
+        "id": 9,
+        "ques": "What is split horizon?",
+        "op1": "Information about a route should not be sent back in the direction from which the original update came.",
+        "op2": "It splits the traffic when you have a large bus (horizon) physical network.",
+        "op3": "It holds the regular updates from broadcasting to a downed link.",
+        "op4": "It prevents regular update messages from reinstating a route that has gone down.",
+        "ans": "Information about a route should not be sent back in the direction from which the original update came."
+      }
+    ]
+    
+  }
