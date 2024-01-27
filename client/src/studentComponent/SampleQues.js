@@ -97,22 +97,21 @@ export default function SampleQues() {
 
   return (
    <>
-        {/* <Navbar/> */}
-        <div className="container mt-5">
-            <h2 className="mb-4 subject-heading">Subjects</h2>
+       <div className="container mt-5">
+        <h2 className="mb-4 subject-heading">Subjects</h2>
             <div className="row">
                 {subjects.map((subject, index) => (
                     
                     <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <Link to={`/ques/${encodeURIComponent(subject)}`} className='sample-link'>
-                         <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">{subject}</h5>
-                                <p className="card-text">{getIconForSubject(subject)}</p>
+                            <div className="card">
+                                <div className="card-body">
+                                    <h5 className="card-title">{subject}</h5>
+                                    <p className="card-text">{getIconForSubject(subject)}</p>
+                                </div>
                             </div>
-                         </div>
                         </Link>
-                </div>
+                    </div>
                 ))}
             </div>
         </div>

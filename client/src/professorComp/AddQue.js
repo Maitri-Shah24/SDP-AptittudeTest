@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export default function AddQue() {
 
@@ -12,22 +13,18 @@ export default function AddQue() {
     'Software Engineering',
     'Web Development',
     'Cybersecurity',
-    'Artificial Intelligence (AI)',
-    'Machine Learning (ML)',
-    'Network Security',
-    'Cloud Computing',
-    'Computer Architecture',
-    'Mobile App Development',
-    'Data Science',
     'Logical Reasoning',
     'Data Interpretation',
     'Verbal Reasoning',
     'Arithmetic Aptitude',]; 
 
+    const { testId } = useParams();
+
+
     const [formData, setFormData] = useState({
         courseID: '',
         question: '',
-        marks: '',
+        weightage: '',
         option1: '',
         option2: '',
         option3: '',
@@ -37,15 +34,25 @@ export default function AddQue() {
     
       const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({
-          ...prevData,
-          [name]: value,
-        }));
+        if (name === 'weightage') {
+          const newValue = Math.min(5, Math.max(0, value));
+          setFormData((prevData) => ({ ...prevData, [name]: newValue }));
+        } else {
+          setFormData((prevData) => ({ ...prevData, [name]: value }));
+        }
       };
     
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
+
+        try {
+          await axios.post(`http://localhost:8000/test/${testId}/addQuestion`, formData);
+          // Optionally, you can redirect to the next question or a success page
+        } catch (error) {
+          console.log(error);
+          // Handle error
+        }
       };
     
       return (
@@ -87,11 +94,11 @@ export default function AddQue() {
             </div>
 
             <div  className="add-que">
-              <label htmlFor="marks">Marks</label>
+              <label htmlFor="weightage">Weightage (Out of 5)</label>
               <input
                 type="text"
-                name="marks"
-                value={formData.marks}
+                name="weightage"
+                value={formData.weightage}
                 onChange={handleChange}
                 required
                 className="form-control"

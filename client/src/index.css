@@ -388,7 +388,7 @@ section .flex-container:nth-child(even) div:nth-child(2){
 
 /* ======================================videoBackground====================================== */
 
-/* styles.css */
+
 .video-background {
   position: absolute;
   margin: auto;
@@ -493,7 +493,9 @@ background-clip: text;
 .with-border {
   border-bottom: 1px solid #ccc; 
 }
+
 /* ============================home============================= */
+
 .home-container{
   width: 100%;
   display: flex;
@@ -537,7 +539,7 @@ background-clip: text;
 
 @media (max-width: 1200px) {
   .home-text {
-    margin-left: 100px; /* Adjust margin for medium-sized screens */
+    margin-left: 100px; 
   }
 }
 
@@ -552,13 +554,13 @@ background-clip: text;
   }
 
   .home-text {
-    margin-left: 50px; /* Adjust margin for smaller screens */
+    margin-left: 50px; 
   }
 }
 
 @media (max-width: 768px) {
   .home-text {
-    margin-left: 5; /* Remove left margin on small screens */
+    margin-left: 5; 
   }
 }
 
@@ -593,4 +595,51 @@ background-clip: text;
 
 .nav-bg-color{
   background:  rgb(78, 214, 192);
+}
+
+
+/* =================================TestList================ */
+/* In your CSS file or style block */
+.test-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px;
+}
+
+.test-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: calc(33.33% - 20px); 
+  box-sizing: border-box;
+  background:rgba(89, 232, 206, 0.445);
+  transition: transform 0.3s ease;
+  border-color: #fff;
+}
+
+.test-card:hover{
+  transform: scale(1.05);
+  box-shadow: 4px 4px 8px rgba(27, 213, 179, 0.752);
+}
+
+
+.test-card h3 {
+  margin-bottom: 40px;
+}
+.test-card p{
+  margin-bottom: 2px;
+}
+
+@media (max-width: 768px) {
+  .test-card {
+    width: calc(50% - 20px); 
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .test-card {
+    width: calc(100% - 20px); 
+    margin: 10px;
+  }
 }

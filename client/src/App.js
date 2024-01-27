@@ -15,6 +15,7 @@ import ProfessorHome from './professorComp/ProfessorHome';
 import { ToastContainer } from 'react-toastify';
 import StudentNavbar from './studentComponent/StudentNavbar';
 import AddTest from './professorComp/AddTest';
+import ProfessorDashboard from './professorComp/ProfessorDashboard';
 
 
 
@@ -26,7 +27,7 @@ function App() {
       <Route exact path="/login" Component={Login} />
       <Route exact path="/register" Component={Register} />
       <Route exact path="/" Component={Select}/>
-      <Route exact path="/addque" Component={AddQue}/>
+      <Route exact path="/addQue/:testId" Component={AddQue}/>
       <Route exact path="/professorlogin" Component={ProfessorLogin}/>
       <Route exact path="/professorregister" Component={ProfessorRegister}/>
       <Route exact path='/sampleque' Component={SampleQues}/>
@@ -34,6 +35,7 @@ function App() {
       <Route exact path="/studenthome" Component={StudentHome}/>
       <Route exact path="/professorhome" Component={ProfessorHome}/>
       <Route exact path="/addtest" Component={AddTest}/>
+      <Route exact path="/professordashboard" Component={ProfessorDashboard}/>
     </Routes>
     <ToastContainer/>
   </BrowserRouter>
