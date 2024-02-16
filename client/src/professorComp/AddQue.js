@@ -48,11 +48,22 @@ export default function AddQue() {
 
         try {
           await axios.post(`http://localhost:8000/test/${testId}/addQuestion`, formData);
+          setFormData({
+            courseID: '',
+            question: '',
+            weightage: '',
+            option1: '',
+            option2: '',
+            option3: '',
+            option4: '',
+            answer: '',
+          });
           // Optionally, you can redirect to the next question or a success page
         } catch (error) {
           console.log(error);
           // Handle error
         }
+
       };
     
       return (
@@ -170,7 +181,6 @@ export default function AddQue() {
                 placeholder='Give correct answer here...'
               />
             </div>
-            {/* Add other form fields similarly */}
     
             <div className='add-que'>
               <button type="submit" className="submit" >

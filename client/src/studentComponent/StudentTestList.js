@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link} from 'react-router-dom'
 
-export default function TestList(){
+export default function StudentTestList(){
   const [tests, setTests] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function TestList(){
       <h2 className='gradient-underline'>Test List</h2>
       <div className="test-card-container">
         {tests.map(test => (
-          <Link key={test._id} to={`/test/${test._id}`} className='test-card'>
+          <Link key={test._id} to={`/instruction/${test._id}`} className='test-card'>
           <div key={test._id}>
             <h3>{test.testName}</h3>
             <p>Duration: {test.duration} minutes</p>

@@ -16,6 +16,9 @@ import { ToastContainer } from 'react-toastify';
 import StudentNavbar from './studentComponent/StudentNavbar';
 import AddTest from './professorComp/AddTest';
 import ProfessorDashboard from './professorComp/ProfessorDashboard';
+import TestDetails from './professorComp/TestDetails';
+import StudentDashboard from './studentComponent/StudentDashboard';
+import Instruction from './studentComponent/Instruction';
 
 
 
@@ -36,7 +39,10 @@ function App() {
       <Route exact path="/professorhome" Component={ProfessorHome}/>
       <Route exact path="/addtest" Component={AddTest}/>
       <Route exact path="/professordashboard" Component={ProfessorDashboard}/>
-    </Routes>
+      <Route exact path="/test/:id" Component={TestDetails} />
+      <Route exact path="/studentdashboard" Component={StudentDashboard}/>
+      <Route exact path="/instruction/:id" Component={Instruction}/>
+    </Routes> 
     <ToastContainer/>
   </BrowserRouter>
    </> 

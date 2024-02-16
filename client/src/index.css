@@ -615,6 +615,8 @@ background-clip: text;
   background:rgba(89, 232, 206, 0.445);
   transition: transform 0.3s ease;
   border-color: #fff;
+  text-decoration: none;
+  color:black;
 }
 
 .test-card:hover{
@@ -642,4 +644,127 @@ background-clip: text;
     width: calc(100% - 20px); 
     margin: 10px;
   }
+}
+
+/* =======================TestList=============== */
+.TestList-container h2
+{
+  text-align: center; 
+  margin-top: 20px;
+  margin-bottom: 40px;
+   padding: 30px 0 8px;
+   position: relative;
+ font-weight: 600;
+ font-size: 40px; 
+ background: linear-gradient(to bottom, rgba(27, 210, 177, 0.66) 30%,rgb(14, 175, 146) 100%);
+ -webkit-background-clip: text;
+ -moz-background-clip: text;
+ background-clip: text;
+ -webkit-text-fill-color:transparent;
+}
+
+.TestList-container{
+  max-width: 90%;
+   margin: auto;
+  padding: 20px;
+}
+/* ====================TestDetails============ */
+.TestDetails-container h2{
+  text-align: center; 
+ margin-top: 20px;
+ margin-bottom: 40px;
+  padding: 30px 0 8px;
+  position: relative;
+font-weight: 600;
+font-size: 40px; 
+background: linear-gradient(to bottom, rgba(27, 210, 177, 0.66) 30%,rgb(14, 175, 146) 100%);
+-webkit-background-clip: text;
+-moz-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color:transparent;
+}
+
+.TestDetails-container{
+  max-width: 90%;
+   margin: auto;
+  padding: 20px;
+}
+
+.question-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 10px;
+  color: red;
+}
+
+.TestDetails-button{
+  max-width: 50%;
+  margin: auto;
+}
+/* .with-border {
+  border-bottom: 1px solid #ccc; 
+} */
+
+
+/* ===============================Instruction page================ */
+
+.instruction-main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  margin: 0; 
+}
+.instruction-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  text-align: left;
+}
+
+.instruction-container h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.instruction-container ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.instruction-container p {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.start-test-button {
+  display: block;
+  margin: 20px auto; /* Center the button horizontally */
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgb(14, 211, 175);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.start-test-button:hover {
+  background-color: rgba(38, 208, 177, 0.822);
 }

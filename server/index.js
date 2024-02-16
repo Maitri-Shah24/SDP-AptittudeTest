@@ -108,7 +108,6 @@ app.get('/tests', async (req, res) => {
 app.post('/test/:testId/addQuestion', async (req, res) => {
   try {
     const testId = req.params.testId;
-
     const test = await TestModel.findById(testId);
     if (!test) {
       return res.status(404).json({ error: 'Test not found.' });
@@ -126,6 +125,30 @@ app.post('/test/:testId/addQuestion', async (req, res) => {
   }
 });
 
+
+app.get('/test/:id/questions', async (req, res) => {
+  const id = req.params.id;
+  
+  try {
+    const questions = await QuestionModel.find({ test: id });
+    res.json(questions);
+  } catch (error) {
+    console.error('Error fetching questions:', error);
+    res.status(500).json({ error: 'Failed to fetch questions' });
+  }
+});
+
+app.delete('/questions/:id', async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  try {
+    await QuestionModel.findByIdAndDelete(id);
+    res.status(204).send();
+  } catch (error) {
+    console.error('Error deleting question:', error);
+    res.status(500).json({ error: 'Failed to delete question' }); 
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
