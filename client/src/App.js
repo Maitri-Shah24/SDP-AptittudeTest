@@ -19,6 +19,7 @@ import ProfessorDashboard from './professorComp/ProfessorDashboard';
 import TestDetails from './professorComp/TestDetails';
 import StudentDashboard from './studentComponent/StudentDashboard';
 import Instruction from './studentComponent/Instruction';
+import Test from './studentComponent/Test';
 
 
 
@@ -42,6 +43,7 @@ function App() {
       <Route exact path="/test/:id" Component={TestDetails} />
       <Route exact path="/studentdashboard" Component={StudentDashboard}/>
       <Route exact path="/instruction/:id" Component={Instruction}/>
+      <Route exact path="/starttest/:id" Component={Test}/>
     </Routes> 
     <ToastContainer/>
   </BrowserRouter>
