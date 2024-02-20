@@ -1,5 +1,7 @@
 console.log("Heloo");
 const express = require('express')
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const mongoose= require('mongoose')
 const cors = require('cors')
 const StudentModel = require('./models/Student')
@@ -14,10 +16,19 @@ const port = 8000
 
 mongoose.connect("mongodb://127.0.0.1:27017/aptitude-test")
 
+app.use(cookieParser());
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } 
+}));
+
 app.post("/login", async (req, res) => {
   const { studentId, password } = req.body;
   StudentModel.findOne({ studentId: studentId }).then(user=>{
     if (user && user.password === password) {
+      req.session.user = user;
       res.json("exist");
       return;
     } else {
