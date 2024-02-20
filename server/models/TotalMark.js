@@ -5,13 +5,13 @@ const totalMarkSchema = new mongoose.Schema({
   test: { type: mongoose.Schema.Types.ObjectId, ref: 'Test' },
   subjectWiseMarks: [
     {
-      subject: { type: mongoose.Schema.Types.ObjectId, ref: 'Subject' },
+      subject: String,
       marks: Number
     }
   ],
   totalMarks: Number
 });
 
-const Mark = mongoose.model('TotalMark', totalMarkSchema);
+const TotalMarkModel = mongoose.model('TotalMark', totalMarkSchema);
 
-module.exports = Mark;
+module.exports = TotalMarkModel;

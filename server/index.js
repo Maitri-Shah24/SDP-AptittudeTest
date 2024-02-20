@@ -92,7 +92,6 @@ app.post('/test', async(req,res)=>{
     const existingTest = await TestModel.findOne({ testName: req.body.testName });
 
     if (existingTest) {
-      // If a test with the same name exists, return an error response
       return res.status(400).json({ error: 'Test with the same name already exists.' });
     }
   TestModel.create(req.body)
@@ -140,20 +139,25 @@ app.post('/test/:testId/addQuestion', async (req, res) => {
 app.get('/test/:testId/marks',async(req,res)=>{
   try{
     const testId = req.params.testId;
-    const marks = await TotalMarkModel.find({test: testId})
-    res.json(marks);
+    console.log(testId);
+    const totalMark = await TotalMarkModel.findOne({test: testId})
+    console.log(totalMark.subjectWiseMarks);
+    console.log(totalMark.totalMarks);
+    res.json({
+      subjectWiseMarks: totalMark.subjectWiseMarks,
+      totalMarks: totalMark.totalMarks
+    });
   }catch (error) {
     console.error('Error fetching marks', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 })
 
-app.get('/test/:testId/update',async(req,res)=>{try {
+app.put('/test/:testId/update',async(req,res)=>{try {
   const { testId } = req.params;
   const { subjectWiseMarks, totalMarks } = req.body;
 
-  // Update the total marks document in the database
-  const updatedTotalMarks = await TotalMarks.findOneAndUpdate(
+  const updatedTotalMarks = await TotalMarkModel.findOneAndUpdate(
     { test: testId },
     { subjectWiseMarks, totalMarks },
     { new: true }

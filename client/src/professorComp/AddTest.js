@@ -38,7 +38,7 @@ export default function AddTest() {
         })
 
         await axios.post("http://localhost:8000/totalMarkTestID",{
-          test:response.data._id
+          test:response.data._id,
         })
         history(`/addQue/${response.data._id}`);
     } catch (e) {

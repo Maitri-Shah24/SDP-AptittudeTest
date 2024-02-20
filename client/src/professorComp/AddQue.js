@@ -20,7 +20,6 @@ export default function AddQue() {
 
     const { testId } = useParams();
 
-
     const [formData, setFormData] = useState({
         courseID: '',
         question: '',
@@ -59,29 +58,31 @@ export default function AddQue() {
             answer: '',
           });
           
-          const {data} = await axios.get(`http://localhost:8000/test/${testId}/marks`);
-          console.log(data);
-          console.log(data.subjectWiseMarks);
-          const subjectIndex = data.subjectWiseMarks.findIndex(subjectMark => subjectMark.subject.toString() === formData.subject);
+          const response = await axios.get(`http://localhost:8000/test/${testId}/marks`);
+          console.log(response.data);
+          let updatedSubjectWiseMarks = response.data.subjectWiseMarks? [...response.data.subjectWiseMarks]:[];
+          console.log(updatedSubjectWiseMarks);
+          const subjectIndex = updatedSubjectWiseMarks? updatedSubjectWiseMarks.findIndex(subjectMark => subjectMark.subject === formData.courseID):-1;
 
-          if (subjectIndex !== -1) {
-           
-            data.subjectWiseMarks[subjectIndex].marks += parseInt(formData.weightage);
-            data.totalMarks+=parseInt(formData.weightage);
-          } else {
-            // If the subject is not present, add a new entry for the subject with the weightage as the marks
-            data.subjectWiseMarks.push({
-              subject: formData.subject,
-              marks: parseInt(formData.weightage)
+        if (subjectIndex !== -1) {
+            updatedSubjectWiseMarks[subjectIndex].marks += parseInt(formData.weightage);
+            response.data.totalMarks += parseInt(formData.weightage);
+        } else {
+            updatedSubjectWiseMarks.push({
+                subject: formData.courseID,
+                marks: parseInt(formData.weightage)
             });
-            data.totalMarks+=parseInt(formData.weightage);
-          }
-          
-          await axios.put(`http://localhost:8000/test/${testId}/update`, data);
+            console.log(updatedSubjectWiseMarks);
+            response.data.totalMarks += parseInt(formData.weightage);
+        }
+
+        await axios.put(`http://localhost:8000/test/${testId}/update`, {
+            subjectWiseMarks: updatedSubjectWiseMarks,
+            totalMarks: response.data.totalMarks
+        });
 
         } catch (error) {
           console.log(error);
-          // Handle error
         }
 
       };
