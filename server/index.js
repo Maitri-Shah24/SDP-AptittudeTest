@@ -8,6 +8,7 @@ const StudentModel = require('./models/Student')
 const ProfessorModel = require('./models/Professor');
 const TestModel = require('./models/Test');
 const QuestionModel = require('./models/Question')
+const TotalMarkModel = require('./models/TotalMark')
 
 const app = express()
 app.use(express.json())
@@ -158,6 +159,27 @@ app.delete('/questions/:id', async (req, res) => {
   } catch (error) {
     console.error('Error deleting question:', error);
     res.status(500).json({ error: 'Failed to delete question' }); 
+  }
+});
+
+app.post("/totalMarkTestID", async (req, res) => {
+  try {
+    const testId = req.body.test;
+    const test = await TotalMarkModel.findOne({ test: testId });
+
+    if (!test) {
+      const newTotalMark = await TotalMarkModel.create({
+        test: testId,
+        subjectWiseMarks: [],
+        totalMarks: 0
+      });
+      res.json(newTotalMark);
+    } else {
+      res.json(test);
+    }
+  } catch (error) {
+    console.error('Error adding question:', error);
+    res.status(500).json({ error: error.message });
   }
 });
 
