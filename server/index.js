@@ -137,6 +137,34 @@ app.post('/test/:testId/addQuestion', async (req, res) => {
   }
 });
 
+app.get('/test/:testId/marks',async(req,res)=>{
+  try{
+    const testId = req.params.testId;
+    const marks = await TotalMarkModel.find({test: testId})
+    res.json(marks);
+  }catch (error) {
+    console.error('Error fetching marks', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+})
+
+app.get('/test/:testId/update',async(req,res)=>{try {
+  const { testId } = req.params;
+  const { subjectWiseMarks, totalMarks } = req.body;
+
+  // Update the total marks document in the database
+  const updatedTotalMarks = await TotalMarks.findOneAndUpdate(
+    { test: testId },
+    { subjectWiseMarks, totalMarks },
+    { new: true }
+  );
+
+  res.json(updatedTotalMarks);
+} catch (error) {
+  console.error('Error updating total marks:', error);
+  res.status(500).json({ error: error.message });
+}
+});
 
 app.get('/test/:id/questions', async (req, res) => {
   const id = req.params.id;

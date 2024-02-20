@@ -58,7 +58,27 @@ export default function AddQue() {
             option4: '',
             answer: '',
           });
-          // Optionally, you can redirect to the next question or a success page
+          
+          const {data} = await axios.get(`http://localhost:8000/test/${testId}/marks`);
+          console.log(data);
+          console.log(data.subjectWiseMarks);
+          const subjectIndex = data.subjectWiseMarks.findIndex(subjectMark => subjectMark.subject.toString() === formData.subject);
+
+          if (subjectIndex !== -1) {
+           
+            data.subjectWiseMarks[subjectIndex].marks += parseInt(formData.weightage);
+            data.totalMarks+=parseInt(formData.weightage);
+          } else {
+            // If the subject is not present, add a new entry for the subject with the weightage as the marks
+            data.subjectWiseMarks.push({
+              subject: formData.subject,
+              marks: parseInt(formData.weightage)
+            });
+            data.totalMarks+=parseInt(formData.weightage);
+          }
+          
+          await axios.put(`http://localhost:8000/test/${testId}/update`, data);
+
         } catch (error) {
           console.log(error);
           // Handle error
