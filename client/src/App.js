@@ -13,7 +13,6 @@ import QuestionPage from './studentComponent/QuestionPage';
 import StudentHome from './studentComponent/StudentHome';
 import ProfessorHome from './professorComp/ProfessorHome';
 import { ToastContainer } from 'react-toastify';
-import StudentNavbar from './studentComponent/StudentNavbar';
 import AddTest from './professorComp/AddTest';
 import ProfessorDashboard from './professorComp/ProfessorDashboard';
 import TestDetails from './professorComp/TestDetails';
@@ -22,13 +21,18 @@ import Instruction from './studentComponent/Instruction';
 import Test from './studentComponent/Test';
 import AboutPage from './studentComponent/AboutPage';
 import ContactUs from './studentComponent/ContactUs';
+import { SessionProvider } from './components/SessionContext';
 
 
 
 function App() {
+
+  const storedUser = localStorage.getItem('user');
+  const initialUser = storedUser ? JSON.parse(storedUser) : null;
   return (
    <>
-   <BrowserRouter>
+  <BrowserRouter>
+   <SessionProvider initialUser={initialUser}>
     <Routes>
       <Route exact path="/login" Component={Login} />
       <Route exact path="/register" Component={Register} />
@@ -50,6 +54,7 @@ function App() {
       <Route exact path="/starttest/:id" Component={Test}/>
     </Routes> 
     <ToastContainer/>
+    </SessionProvider>
   </BrowserRouter>
    </> 
 
