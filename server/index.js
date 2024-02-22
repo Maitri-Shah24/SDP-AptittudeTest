@@ -197,6 +197,16 @@ app.get('/test/:id/questions', async (req, res) => {
   }
 });
 
+app.get('/test/:id/duration', async(req,res)=>{
+  try{
+    const test = await TestModel.findById(req.params.id);
+    res.json({duration:test.duration});
+  }catch (error) {
+    console.error('Error fetching time:', error);
+    res.status(500).json({ error: 'Failed to fetch Time' });
+  }
+})
+
 app.delete('/questions/:id/delete', async (req, res) => {
   const id = req.params.id;
   try {

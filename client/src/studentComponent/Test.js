@@ -12,27 +12,77 @@ export default function Test() {
     const incorrect = [];
     var totalMarks = 0;
     const { user } = useSession();
+    const [time, setTime] = useState(() => {
+      const storedTime = localStorage.getItem('testTime');
+      return storedTime ? parseInt(storedTime, 10) : 0;
+  });
 
   useEffect(() => {
     const fetchQuestions = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8000/test/${id}/questions`);
-        setQuestions(response.data);
-      } catch (error) {
-        console.error('Error fetching questions:', error);
-      }
+        try {
+            const response = await axios.get(`http://localhost:8000/test/${id}/questions`);
+            setQuestions(response.data);
+            const response2 = await axios.get(`http://localhost:8000/test/${id}/duration`);
+            const timeMillisecond = parseInt(response2.data.duration * 60 * 1000);
+            setTime(prevTime => {
+                const storedTime = localStorage.getItem('testTime');
+                const storedTimeInt = storedTime ? parseInt(storedTime, 10) : 0;
+                return storedTimeInt > 0 ? storedTimeInt : timeMillisecond;
+            });
+            if (!localStorage.getItem('testTime')) {
+                localStorage.setItem('testTime', timeMillisecond.toString());
+            }
+        } catch (error) {
+            console.error('Error fetching Time:', error);
+        }
     };
 
     fetchQuestions();
-  }, [id]);
+}, [id]);
+
+
+
+  
+  useEffect(() => {
+    let intervalId;
+
+    const tick = () => {
+        setTime(prevTime => {
+            const newTime = prevTime - 1000;
+            localStorage.setItem('testTime', newTime.toString());
+            return newTime >= 0 ? newTime : 0;
+        });
+    };
+
+    intervalId = setInterval(tick, 1000);
+
+    return () => {
+        clearInterval(intervalId);
+    };
+}, []);
+
+
+  const getFormattedTime=(milliseconds)=>{
+
+    if (isNaN(milliseconds)) {
+      return ""; 
+  }
+    let total_seconds = parseInt(Math.floor(milliseconds/1000));
+    let total_minutes = parseInt(Math.floor(total_seconds/60));
+    let total_hours = parseInt(Math.floor(total_minutes/60));
+
+    let seconds = parseInt(total_seconds % 60);
+    let minutes = parseInt(total_minutes % 60);
+    let hours = parseInt(total_hours % 24);
+
+    return `${hours}: ${minutes}: ${seconds}`;
+  }
 
   const handleOptionChange = (questionIndex, optionIndex) => {
     const newSelectedAnswers = [...selectedAnswers];
     newSelectedAnswers[questionIndex] = questions[questionIndex][`option${optionIndex + 1}`];
     setSelectedAnswers(newSelectedAnswers);
   }
-
-  console.log(selectedAnswers);
   const handleSubmit= async()=>{
 
         const response = await axios.get(`http://localhost:8000/test/${id}/getSubjects`)
@@ -75,7 +125,7 @@ export default function Test() {
   return (
     
     <div>
-      {user.id}
+        <div className='test-timer'>{getFormattedTime(time)}</div>
          <div className='test-question-container'>
       {questions.map((question, questionIndex) => (
         <div key={question._id}>
