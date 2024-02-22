@@ -1,4 +1,3 @@
-
 import './App.css';
 import Select from './components/Select';
 import Register from './studentComponent/Register';
@@ -22,7 +21,7 @@ import Instruction from './studentComponent/Instruction';
 import Test from './studentComponent/Test';
 import AboutPage from './studentComponent/AboutPage';
 import ContactUs from './studentComponent/ContactUs';
-import Demo from './studentComponent/demo';
+
 
 
 
@@ -47,7 +46,7 @@ function App() {
       <Route exact path="/studentdashboard" Component={StudentDashboard}/>
       <Route exact path="/about" Component={AboutPage}/>
       <Route exact path='/contactus' Component={ContactUs}/>
-      <Route exact path='/demo' Component={Demo}/>
+      
       <Route exact path="/instruction/:id" Component={Instruction}/>
       <Route exact path="/starttest/:id" Component={Test}/>
     </Routes> 
