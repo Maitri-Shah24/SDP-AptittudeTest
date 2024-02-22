@@ -7,8 +7,9 @@ const cors = require('cors')
 const StudentModel = require('./models/Student')
 const ProfessorModel = require('./models/Professor');
 const TestModel = require('./models/Test');
-const QuestionModel = require('./models/Question')
-const TotalMarkModel = require('./models/TotalMark')
+const QuestionModel = require('./models/Question');
+const TotalMarkModel = require('./models/TotalMark');
+const MarksModel = require('./models/Marks');
 
 const app = express()
 app.use(express.json())
@@ -153,6 +154,20 @@ app.get('/test/:testId/marks',async(req,res)=>{
   }
 })
 
+app.get('/test/:testId/:questionId/marks',async(req,res)=>{
+
+
+    const Qid = req.params.questionId;
+    console.log(Qid);
+    const question = await QuestionModel.findById(Qid);
+    console.log(question);
+    const marks = await TotalMarkModel.findOne({test :  question.test});
+    res.json({question:question,
+      subjectWiseMarks: marks.subjectWiseMarks,
+      totalMarks: marks.totalMarks});
+
+})
+
 app.put('/test/:testId/update',async(req,res)=>{try {
   const { testId } = req.params;
   const { subjectWiseMarks, totalMarks } = req.body;
@@ -182,11 +197,11 @@ app.get('/test/:id/questions', async (req, res) => {
   }
 });
 
-app.delete('/questions/:id', async (req, res) => {
+app.delete('/questions/:id/delete', async (req, res) => {
   const id = req.params.id;
-  console.log(id);
   try {
-    await QuestionModel.findByIdAndDelete(id);
+
+   const question = await QuestionModel.findByIdAndDelete(id);
     res.status(204).send();
   } catch (error) {
     console.error('Error deleting question:', error);
@@ -214,6 +229,53 @@ app.post("/totalMarkTestID", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+
+app.get("/test/:id/getSubjects" , async(req,res)=>
+{
+  try{
+    const testId = req.params.id;
+    const totalMarks = await TotalMarkModel.findOne({test : testId});
+    console.log(totalMarks.subjectWiseMarks);
+    res.json(totalMarks.subjectWiseMarks);
+
+  }
+  catch(error){
+    console.error('Error fetching subject:', error);
+    res.status(500).json({ error: 'Failed to fetch questions' });
+  }
+})
+
+app.post("/test/:id/studentMarks/:userid" , async(req,res)=>{
+  try{
+
+    const testId = req.params.id;
+    const studentId = req.params.userid;
+
+    MarksModel.findOne({student:studentId, test:testId}).then((existing)=>
+    {
+      if(existing){
+        return;
+      }
+      else{
+        const studentMarks = MarksModel.create({
+          student:studentId,
+          test: testId,
+          marks: req.body.subjectMarks,
+          totalMarks: req.body.totalMarks,
+          incorrect: req.body.incorrect
+        })
+      }
+    })
+    
+
+  }
+  catch (error) {
+    console.error('Error adding studentMarks:', error);
+    res.status(500).json({ error: error.message });
+  }
+
+})
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

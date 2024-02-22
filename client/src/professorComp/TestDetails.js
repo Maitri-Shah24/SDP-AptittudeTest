@@ -27,9 +27,24 @@ export default function TestDetails (){
   }
 
   const handleDelete = async (questionId) => {
+
+    const testId = id;
    
       try {
-        await axios.delete(`http://localhost:8000/questions/${questionId}`);
+        const response = await axios.get(`http://localhost:8000/test/${testId}/${questionId}/marks`);
+
+        let updatedSubjectWiseMarks =[...response.data.subjectWiseMarks];
+        const subjectIndex = updatedSubjectWiseMarks.findIndex(subjectMark => subjectMark.subject === response.data.question.courseID);
+
+        response.data.totalMarks -= parseInt(response.data.question.weightage);
+        updatedSubjectWiseMarks[subjectIndex].marks-=parseInt(response.data.question.weightage);         
+
+      await axios.put(`http://localhost:8000/test/${testId}/update`, {
+          subjectWiseMarks: updatedSubjectWiseMarks,
+          totalMarks: response.data.totalMarks
+      });
+
+      await axios.delete(`http://localhost:8000/questions/${questionId}/delete`);
         setQuestions(questions.filter(question => question._id !== questionId));
       } catch (error) {
         console.error('Error deleting question:', error);

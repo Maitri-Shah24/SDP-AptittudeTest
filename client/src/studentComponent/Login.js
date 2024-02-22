@@ -4,11 +4,13 @@ import VideoBackGround from "../components/VideoBackGround";
 import { toast} from "react-toastify";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
+import { useSession } from "../components/SessionContext";
 
 
 export default function Login(props) {
   const [studentId, setStudentId] = useState("");
   const [password, setPassword] = useState("");
+  const { setUser } = useSession();
 
   const history = useNavigate();
 
@@ -31,7 +33,8 @@ export default function Login(props) {
               pauseOnHover: true,
               style:{background:'white'}
             });
-            history("/studenthome", { state: { id: studentId } });
+            setUser({ id: studentId });
+            history("/studenthome");
           } else if (res.data === "notexist") {
             alert("User have not sign up");
           }

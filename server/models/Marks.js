@@ -2,16 +2,23 @@
 const mongoose = require('mongoose');
 
 const markSchema = new mongoose.Schema({
-  student: { type: mongoose.Schema.Types.ObjectId, ref: 'Student' },
+  student: String,
   test: { type: mongoose.Schema.Types.ObjectId, ref: 'Test' },
   marks: [
     {
       subject: String,
       score: Number
     }
+  ],
+  totalMarks: Number,
+  incorrect: [
+    {
+      subject: String,
+      incorrectNumber: Number
+    }
   ]
 });
 
-const Mark = mongoose.model('Mark', markSchema);
+const MarksModel = mongoose.model('Mark', markSchema);
 
-module.exports = Mark;
+module.exports = MarksModel;
