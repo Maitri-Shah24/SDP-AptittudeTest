@@ -1,8 +1,11 @@
 import React from 'react'
 import home1 from '../Images/prohome.jpg'
+import ProfessorNavbar from './ProfessorNavbar'
 
 export default function ProfessorHome() {
   return (
+    <>
+    <ProfessorNavbar/>
     <div className="home-container">
       <div className="home-text">
         <h1>"Empower Your Teaching Experience with Our Platform"</h1>
@@ -12,5 +15,6 @@ export default function ProfessorHome() {
         <img src={home1} alt='image'/>
       </div>
     </div>
+    </>
   )
 }

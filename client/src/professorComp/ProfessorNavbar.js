@@ -7,22 +7,22 @@ export default function ProfessorNavbar() {
       <div className="container-fluid justify-content-center"  style={{ marginBottom: '30px',height:'50px' }}>
           <div className="row">
             <div className="col">
-              <a className="navbar-brand" href="studenthome">
+              <a className="navbar-brand" href="professorhome">
                 Home
               </a>
             </div>
             <div className="col">
-              <a className="navbar-brand" href="studentdashboard">
+              <a className="navbar-brand" href="professordashboard">
                 Dashboard
               </a>
             </div>
             <div className="col">
-              <a className="navbar-brand" href="about">
+              <a className="navbar-brand" href="proabout">
                 About
               </a>
             </div>
             <div className="col">
-              <a className="navbar-brand" href="contactus">
+              <a className="navbar-brand" href="procontactus">
                 Contact Us
               </a>
             </div>

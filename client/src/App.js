@@ -21,6 +21,8 @@ import Test from './studentComponent/Test';
 import AboutPage from './studentComponent/AboutPage';
 import ContactUs from './studentComponent/ContactUs';
 import { SessionProvider } from './components/SessionContext';
+import ProAbout from './professorComp/Proabout';
+import ProContact from './professorComp/ProContact';
 
 
 
@@ -50,7 +52,8 @@ function App() {
       <Route exact path="/studentdashboard" Component={StudentDashboard}/>
       <Route exact path="/about" Component={AboutPage}/>
       <Route exact path='/contactus' Component={ContactUs}/>
-      
+      <Route exact path="/proabout" Component={ProAbout}/>
+      <Route exact path='/procontactus' Component={ProContact}/>
       <Route exact path="/instruction/:id" Component={Instruction}/>
       <Route exact path="/starttest/:id" Component={Test}/>
     </Routes> 
