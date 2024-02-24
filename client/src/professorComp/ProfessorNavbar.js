@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ProfessorNavbar() {
+export default function StudentNavbar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark nav-bg-color sticky-top">
@@ -19,9 +19,6 @@ export default function ProfessorNavbar() {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/about">About Us</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/contactus">Contact Us</a>
               </li>
             </ul>
             <ul className="navbar-nav me-4 mb-2 mb-lg-0 profile-menu">
