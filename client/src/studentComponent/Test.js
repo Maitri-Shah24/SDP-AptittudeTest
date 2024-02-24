@@ -16,36 +16,36 @@ export default function Test() {
     var totalMarks = 0;
     const { user } = useSession();
     const [time, setTime] = useState(() => {
-      const storedTime = localStorage.getItem('testTime');
+      const storedTime = localStorage.getItem(`testTime_${id}`);
       return storedTime ? parseInt(storedTime, 10) : 0;
   });
   const [testName,setTestName]=useState("");
 
-  // const [tabSwitchCount, setTabSwitchCount] = useState(0);
+  const [tabSwitchCount, setTabSwitchCount] = useState(0);
 
-  //   useEffect(() => {
-  //       const handleVisibilityChange = () => {
-  //           if (document.visibilityState === 'hidden') {
-  //               setTabSwitchCount(prevCount => prevCount + 1);
-  //           }
-  //       };
-  //       document.addEventListener('visibilitychange', handleVisibilityChange);
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === 'hidden') {
+                setTabSwitchCount(prevCount => prevCount + 1);
+            }
+        };
+        document.addEventListener('visibilitychange', handleVisibilityChange);
 
-  //       return () => {
-  //           document.removeEventListener('visibilitychange', handleVisibilityChange);
-  //       };
-  //   }, []);
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    }, []);
 
-  //   useEffect(() => {
-  //       if(tabSwitchCount <= 2 && tabSwitchCount>0){
-  //           alert('Do not switch the tab, Test will be automactically submit after 3 switches.')
-  //       }
-  //       if (tabSwitchCount > 2) {
-  //           alert('You have switched tabs multiple times. Your test will be submitted.');
-  //           navigate("/result");
-  //       }
+    useEffect(() => {
+        if(tabSwitchCount <= 2 && tabSwitchCount>0){
+            alert('Do not switch the tab, Test will be automactically submit after 3 switches.')
+        }
+        if (tabSwitchCount > 2) {
+            alert('You have switched tabs multiple times. Your test will be submitted.');
+            navigate("/result");
+        }
 
-  //   }, [tabSwitchCount]);
+    }, [tabSwitchCount]);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -54,15 +54,16 @@ export default function Test() {
             setQuestions(response.data);
             const response2 = await axios.get(`http://localhost:8000/test/${id}/duration`);
             const timeMillisecond = parseInt(response2.data.duration * 60 * 1000);
+            console.log(timeMillisecond)
             setTestName(response2.data.testName);
             setTime(prevTime => {
-                const storedTime = localStorage.getItem('testTime');
-                const storedTimeInt = storedTime ? parseInt(storedTime, 10) : 0;
-                return storedTimeInt > 0 ? storedTimeInt : timeMillisecond;
-            });
-            if (!localStorage.getItem('testTime')) {
-                localStorage.setItem('testTime', timeMillisecond.toString());
-            }
+              const storedTime = localStorage.getItem(`testTime_${id}`);
+              const storedTimeInt = storedTime ? parseInt(storedTime, 10) : 0;
+              return storedTimeInt > 0 ? storedTimeInt : timeMillisecond;
+          });
+          if (!localStorage.getItem(`testTime_${id}`)) {
+              localStorage.setItem(`testTime_${id}`, timeMillisecond.toString());
+          }
         } catch (error) {
             console.error('Error fetching Time:', error);
         }
