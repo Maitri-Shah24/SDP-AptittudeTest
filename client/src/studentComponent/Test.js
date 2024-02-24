@@ -1,10 +1,13 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSession } from '../components/SessionContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Test() {
+
+    const navigate = useNavigate();
     const { id } = useParams();
     const [selectedAnswers, setSelectedAnswers] = useState([]);
     const [questions, setQuestions] = useState([]);
@@ -16,6 +19,33 @@ export default function Test() {
       const storedTime = localStorage.getItem('testTime');
       return storedTime ? parseInt(storedTime, 10) : 0;
   });
+  const [testName,setTestName]=useState("");
+
+  // const [tabSwitchCount, setTabSwitchCount] = useState(0);
+
+  //   useEffect(() => {
+  //       const handleVisibilityChange = () => {
+  //           if (document.visibilityState === 'hidden') {
+  //               setTabSwitchCount(prevCount => prevCount + 1);
+  //           }
+  //       };
+  //       document.addEventListener('visibilitychange', handleVisibilityChange);
+
+  //       return () => {
+  //           document.removeEventListener('visibilitychange', handleVisibilityChange);
+  //       };
+  //   }, []);
+
+  //   useEffect(() => {
+  //       if(tabSwitchCount <= 2 && tabSwitchCount>0){
+  //           alert('Do not switch the tab, Test will be automactically submit after 3 switches.')
+  //       }
+  //       if (tabSwitchCount > 2) {
+  //           alert('You have switched tabs multiple times. Your test will be submitted.');
+  //           navigate("/result");
+  //       }
+
+  //   }, [tabSwitchCount]);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -24,6 +54,7 @@ export default function Test() {
             setQuestions(response.data);
             const response2 = await axios.get(`http://localhost:8000/test/${id}/duration`);
             const timeMillisecond = parseInt(response2.data.duration * 60 * 1000);
+            setTestName(response2.data.testName);
             setTime(prevTime => {
                 const storedTime = localStorage.getItem('testTime');
                 const storedTimeInt = storedTime ? parseInt(storedTime, 10) : 0;
@@ -64,9 +95,7 @@ export default function Test() {
 
   const getFormattedTime=(milliseconds)=>{
 
-    if (isNaN(milliseconds)) {
-      return ""; 
-  }
+
     let total_seconds = parseInt(Math.floor(milliseconds/1000));
     let total_minutes = parseInt(Math.floor(total_seconds/60));
     let total_hours = parseInt(Math.floor(total_minutes/60));
@@ -119,16 +148,22 @@ export default function Test() {
         const userid = user.id;
 
         await axios.post(`http://localhost:8000/test/${id}/studentMarks/${userid}`,{subjectMarks: marks, totalMarks : totalMarks, incorrect : incorrect});
+
+        navigate("/result");
         
   }
 
   return (
     
-    <div>
-        <div className='test-timer'>{getFormattedTime(time)}</div>
-         <div className='test-question-container'>
+    <div className='test-main-container'>
+        <h2 className='gradient-underline'>{testName}</h2>
+        <div className='timer-container'>
+              <i className='fas fa-clock'></i>
+             <div className='test-timer'>{getFormattedTime(time)}</div>
+        </div>
+         <div className='test-question-container '>
       {questions.map((question, questionIndex) => (
-        <div key={question._id}>
+        <div className='with-border' key={question._id}>
           <h3>{questionIndex+1}. {question.question}</h3>
           {['option1', 'option2', 'option3', 'option4'].map((optionKey, optionIndex) => (
             <div className='options'>
@@ -148,7 +183,7 @@ export default function Test() {
           
          <div className='add-que'>
             <button type="submit" className="submit" onClick={handleSubmit} >
-              ADD QUESTIONS
+              Submit
             </button>
           </div>
     </div>

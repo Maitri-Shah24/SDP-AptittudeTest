@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link} from 'react-router-dom'
+import NavigationMenu from './NavigationMenu';
 
 export default function StudentTestList(){
   const [tests, setTests] = useState([]);
@@ -13,7 +14,8 @@ export default function StudentTestList(){
   }, []); 
 
   return (
-    <div>
+    <div className='d-flex'>
+      <NavigationMenu/>
       <div className='TestList-container'>
       <h2 className='gradient-underline'>Test List</h2>
       <div className="test-card-container">

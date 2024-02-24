@@ -6,9 +6,9 @@ body {
   box-sizing: border-box;
   
 }
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 .select-container {
   display: flex;
@@ -507,11 +507,11 @@ background-clip: text;
 }
 .home-text{
   flex:2;
-  margin: auto;
+  /* margin: auto; */
   margin-left: 120px;
 }
 .home-text h1{
-  margin-top: 20px; 
+  margin-top: 20%; 
   position: relative;
  font-weight: 600;
  font-size: 42px; 
@@ -522,7 +522,7 @@ background-clip: text;
  -webkit-text-fill-color:transparent;
 }
 .home-text p{
-  margin-top: 40px;
+  margin-top: 20px;
   font-size: 20px;
 }
 .home-img{
@@ -567,6 +567,15 @@ background-clip: text;
   }
 }
 
+/* ==========================navBar====================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+ /* Ensure the navbar stays above other content */
+}
 
 
 .profile-pic{
@@ -597,9 +606,184 @@ background-clip: text;
 }
 
 .nav-bg-color{
-  background:  rgb(78, 214, 192);
+  background:  #f8f8f8;
 }
 
+.navbar-nav{
+  gap:40px;
+}
+
+.navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.764);
+  font-size: 1.3rem;
+}
+.nav-link:hover{
+  color: rgb(27, 210, 177);
+}
+
+.nav-link:active{
+  color: rgb(27, 210, 177); 
+}
+
+.navbar-toggler-icon{
+  display: block;
+}
+
+
+/* =====================sideNav================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+
+
+.side-container{
+    background:  #f8f8f8;
+    width: 390px;
+    position: sticky;
+    color: rgba(0, 0, 0, 0.764);
+    transition: 0.4s;
+    /* overflow-y: scroll; */
+    height: 100vh;
+    z-index: 1000;
+    top: 0;
+    overflow: hidden;
+}
+
+.side-container-NX {
+    width: 100px;
+}
+
+.name {
+    text-align: center;
+}
+
+.nav-upper, .nav-heading, .nav-menu,
+.menu-item {
+    display: grid;
+}
+
+.nav-menu {
+    grid-template-rows: repeat(7, 1fr);
+    margin-top: 50px;
+    /* font-size: 100%; */
+}
+
+.nav-heading {
+    grid-template-columns: 2fr, 1fr;
+    grid-template-rows: 1fr;
+    height: 75px;
+}
+ 
+.nav-brand {
+    display: flex;
+}
+
+.hamburger {
+  
+    position: absolute;
+    right: 25px;
+    top: 0;
+    background: none;
+    border: none;
+    cursor:pointer ;
+    margin: 0 -35px;
+    background-color: #ebeaea;
+    border: 2px solid  rgba(0, 0, 0, 0.764) ;
+    padding: 20px;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    scale: 60%;
+}
+
+.hamburger-in{
+  left: 50px;
+}
+
+.hamburger span{
+    display: block;
+    margin-top: 5px;
+    background-color:  rgba(0, 0, 0, 0.764);
+    border-radius: 15px;
+    height: 4px;
+    width: 30px;
+    transition: 0.4s;
+    transform: translate(-3px, -3px);
+}
+
+.hamburger-out:hover span:nth-child(1) {
+    width: 25px;
+    transform: translate(-3px, 9px) rotate(30deg);
+}
+.hamburger-out:hover span:nth-child(2) {
+    display: none;
+}
+.hamburger-out:hover span:nth-child(3) {
+    width: 25px;
+    transform: translate(-3px, -9px) rotate(-30deg);
+}
+
+.hamburger-in:hover span:nth-child(1) {
+    width: 25px;
+    transform: translate(0px, 9px) rotate(-30deg);
+}
+.hamburger-in:hover span:nth-child(2) {
+    display: none;
+}
+.hamburger-in:hover span:nth-child(3) {
+    width: 25px;
+    transform: translate(0px, -9px) rotate( 30deg);
+}
+
+.menu-item {
+    /* padding-top: 20px; */
+    height: 50px;
+    width: 90%;
+    display: flex;
+    color:  rgba(0, 0, 0, 0.764);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 25px 20px -10px 20px;
+    border-radius: 10px;
+    position: relative;
+    transform: translateY(-60px);
+    gap: 10px;
+    font-family: 'Poppins', sans-serif ;
+    font-size: 1rem;
+    /* scale: 95%%; */
+    
+}
+
+.menu-item:hover{
+  color: rgb(27, 210, 177);
+}
+
+.menu-item-NX p{
+  
+}
+.menu-item-NX {
+  gap: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  margin: auto;
+  width: 4.5em;
+}
+
+.menu-item:hover > .tooltip {
+    display: block;
+ 
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    left: -20%;
+    bottom: 80%;
+    width: auto;
+    padding: 4px 8px;
+    border-radius: 15px 15px 15px 0;
+    white-space: nowrap;
+    border: 2px solid rgb(77, 218, 192);
+    background-color:rgb(77, 218, 192);
+}
 
 /* =================================TestList================ */
 /* In your CSS file or style block */
@@ -714,9 +898,7 @@ background-clip: text;
   max-width: 50%;
   margin: auto;
 }
-/* .with-border {
-  border-bottom: 1px solid #ccc; 
-} */
+
 
 
 /* ===============================Instruction page================ */
@@ -774,8 +956,30 @@ background-clip: text;
 
 /* =================================Test.js======================== */
 
+.test-main-container{
+  max-width: 80%;
+   margin: auto;
+  padding: 20px;
+}
+
+.test-main-container h2{
+  text-align: center; 
+   margin-top: 20px;
+   margin-bottom: 40px;
+    padding: 30px 0 8px;
+    position: relative;
+  font-weight: 600;
+  font-size: 40px; 
+  background: linear-gradient(to bottom, rgba(27, 210, 177, 0.66) 30%,rgb(14, 175, 146) 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+}
+
 .options {
-  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 1.2rem;
 }
 
 .options label {
@@ -788,11 +992,45 @@ background-clip: text;
 }
 
 .test-question-container {
+  margin-top: 10px;
   margin-left: 30px;
   margin-bottom: 20px;
 }
 
 .test-question-container h3 {
-  margin-bottom: 10px;
+  margin-top:30px ;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
+.test-main-container .add-que .submit{
+  display: flex;
+  justify-content: center; 
+  width: 50%;
+  margin-left:auto ;
+  margin-right:auto ;
+}
+
+.timer-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.timer-container i{
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 1.7rem;
+  color: #333;
+}
+.test-timer {
+  background-color:rgba(27, 210, 177, 0.388);
+  display: flex;
+ justify-content: right;
+  margin-left: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 50px;
+}
