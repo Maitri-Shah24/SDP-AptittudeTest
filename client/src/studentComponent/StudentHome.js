@@ -5,7 +5,6 @@ import StudentNavbar from './StudentNavbar'
 import { useSession } from '../components/SessionContext'
 
 export default function StudentHome() {
-
   const {user} = useSession();
   return (
     <>

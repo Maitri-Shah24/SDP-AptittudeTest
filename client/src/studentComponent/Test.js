@@ -81,7 +81,7 @@ export default function Test() {
     const tick = () => {
         setTime(prevTime => {
             const newTime = prevTime - 1000;
-            localStorage.setItem('testTime', newTime.toString());
+            localStorage.setItem(`testTime_${id}`, newTime.toString());
             return newTime >= 0 ? newTime : 0;
         });
     };
@@ -157,6 +157,7 @@ export default function Test() {
   return (
     
     <div className='test-main-container'>
+      {user.id}
         <h2 className='gradient-underline'>{testName}</h2>
         <div className='timer-container'>
               <i className='fas fa-clock'></i>

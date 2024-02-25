@@ -34,6 +34,7 @@ export default function Login(props) {
               style:{background:'white'}
             });
             setUser({ id: studentId });
+            localStorage.setItem('user',studentId)
             history("/studenthome");
           } else if (res.data === "notexist") {
             alert("User have not sign up");
