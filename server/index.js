@@ -39,6 +39,22 @@ app.post("/login", async (req, res) => {
   }
 )});
 
+app.get('/profile/:studentId', async (req, res) => {
+  try {
+    const studentId = req.params.studentId;
+    const student = await StudentModel.findOne({ studentId: studentId });
+    if (!student) {
+      return res.status(404).json({ error: 'Student not found' });
+    }
+    console.log(student);
+    res.json(student);
+  } catch (error) {
+    console.error('Error fetching student:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
 app.post('/register',(req,res)=>{
 
   StudentModel.findOne({ email: req.body.email })

@@ -1,6 +1,13 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
+
 
 export default function StudentNavbar() {
+  const navigate = useNavigate();
+
+  const handleProfileClick=()=>{
+    navigate("/profile");
+  }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark nav-bg-color sticky-top">
@@ -32,7 +39,7 @@ export default function StudentNavbar() {
                   </div>
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a className="dropdown-item" href="#"><i className="fas fa-sliders-h fa-fw"></i> Account</a></li>
+                  <li><a className="dropdown-item" href="profile" onClick={handleProfileClick}><i className="fas fa-sliders-h fa-fw"></i> My Profile</a></li>
                   <li><a className="dropdown-item" href="#"><i className="fas fa-cog fa-fw"></i> Settings</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="#"><i className="fas fa-sign-out-alt fa-fw"></i> Log Out</a></li>

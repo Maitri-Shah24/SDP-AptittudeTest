@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function StudentNavbar() {
+export default function ProfessorNavbar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark nav-bg-color sticky-top">
@@ -12,13 +12,16 @@ export default function StudentNavbar() {
           <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0 ">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="/studenthome">Home</a>
+                <a className="nav-link" aria-current="page" href="/professorhome">Home</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/studentdashboard">Dashboard</a>
+                <a className="nav-link" href="/professordashboard">Dashboard</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/about">About Us</a>
+                <a className="nav-link" href="/proabout">About Us</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/procontactus">Contact Us</a>
               </li>
             </ul>
             <ul className="navbar-nav me-4 mb-2 mb-lg-0 profile-menu">

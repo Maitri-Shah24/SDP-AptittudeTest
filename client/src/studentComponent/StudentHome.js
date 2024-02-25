@@ -2,11 +2,15 @@ import React from 'react'
 
 import home1 from '../Images/home.webp'
 import StudentNavbar from './StudentNavbar'
+import { useSession } from '../components/SessionContext'
 
 export default function StudentHome() {
+
+  const {user} = useSession();
   return (
     <>
     <StudentNavbar/>
+   
     <div className="home-container">
       <div className="home-text">
         <h1>"Unlock Your Potential: Discover, Practice, Excel! "</h1>
@@ -16,6 +20,7 @@ export default function StudentHome() {
         <img src={home1} alt='image'/>
       </div>
     </div>
+    {user.id}
     </>
   )
 }

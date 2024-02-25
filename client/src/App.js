@@ -23,6 +23,7 @@ import ContactUs from './studentComponent/ContactUs';
 import { SessionProvider } from './components/SessionContext';
 import ProAbout from './professorComp/Proabout';
 import ProContact from './professorComp/ProContact';
+import Profile from './studentComponent/profile';
 
 
 
@@ -37,6 +38,7 @@ function App() {
    <SessionProvider initialUser={initialUser}>
     <Routes>
       <Route exact path="/login" Component={Login} />
+      <Route exact path="/profile" Component={Profile} />
       <Route exact path="/register" Component={Register} />
       <Route exact path="/" Component={Select}/>
       <Route exact path="/addQue/:testId" Component={AddQue}/>
