@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from './StudentNavbar'
 import { Link } from 'react-router-dom';
+import StudentNavbar from './StudentNavbar';
+import NavigationMenu from './NavigationMenu';
 
 export default function SampleQues() {
 
@@ -97,6 +99,9 @@ export default function SampleQues() {
 
   return (
    <>
+        <StudentNavbar/>
+        <div className='d-flex'>
+        <NavigationMenu/>
        <div className="container mt-5">
         <h2 className="mb-4 subject-heading">Subjects</h2>
             <div className="row">
@@ -114,6 +119,7 @@ export default function SampleQues() {
                     </div>
                 ))}
             </div>
+        </div>
         </div>
         </>
     );
