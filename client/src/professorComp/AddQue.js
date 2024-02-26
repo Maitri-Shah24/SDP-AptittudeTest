@@ -62,14 +62,16 @@ export default function AddQue() {
           console.log(response.data);
           let updatedSubjectWiseMarks = response.data.subjectWiseMarks? [...response.data.subjectWiseMarks]:[];
           console.log(updatedSubjectWiseMarks);
-          const subjectIndex = updatedSubjectWiseMarks? updatedSubjectWiseMarks.findIndex(subjectMark => subjectMark.subject === formData.courseID):-1;
+          const subjectIndex = updatedSubjectWiseMarks? updatedSubjectWiseMarks.findIndex(subject => subject.subject === formData.courseID):-1;
 
         if (subjectIndex !== -1) {
             updatedSubjectWiseMarks[subjectIndex].marks += parseInt(formData.weightage);
+            updatedSubjectWiseMarks[subjectIndex].number+=1;
             response.data.totalMarks += parseInt(formData.weightage);
         } else {
             updatedSubjectWiseMarks.push({
                 subject: formData.courseID,
+                number: 1,
                 marks: parseInt(formData.weightage)
             });
             console.log(updatedSubjectWiseMarks);

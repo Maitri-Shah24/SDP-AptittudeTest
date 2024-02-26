@@ -6,10 +6,11 @@ const totalMarkSchema = new mongoose.Schema({
   subjectWiseMarks: [
     {
       subject: String,
+      number: Number,
       marks: Number
     }
   ],
-  totalMarks: Number
+  totalMarks: Number,
 });
 
 const TotalMarkModel = mongoose.model('TotalMark', totalMarkSchema);

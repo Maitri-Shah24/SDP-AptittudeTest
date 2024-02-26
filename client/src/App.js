@@ -24,6 +24,7 @@ import { SessionProvider } from './components/SessionContext';
 import ProAbout from './professorComp/Proabout';
 import ProContact from './professorComp/ProContact';
 import Profile from './studentComponent/profile';
+import StudentResult from './studentComponent/StudentResult';
 
 
 
@@ -60,6 +61,7 @@ function App() {
       <Route exact path='/procontactus' Component={ProContact}/>
       <Route exact path="/instruction/:id" Component={Instruction}/>
       <Route exact path="/starttest/:id" Component={Test}/>
+      <Route exact path='/result' Component={StudentResult}/>
     </Routes> 
     <ToastContainer/>
     </SessionProvider>

@@ -1,21 +1,42 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function Instruction() {
 
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [queNumber, setQueNumber] = useState(0);
+  const [duration, setDuration] = useState(0);
+  console.log(queNumber);
+  console.log(duration);
 
-  const history = useNavigate();
+  useEffect(() => {
+    const fetchDetails = async () => {
+        try {
+          const response = await axios.get(`http://localhost:8000/test/${id}/questions`);
+          setQueNumber(response.data.length);
+          const response2 = await axios.get(`http://localhost:8000/test/${id}/duration`);
+          setDuration(response2.data.duration)
+        }catch(error){
+        }
+      }
+      fetchDetails();
+  }
+  )
   function handleSubmit(){
-    history(`/starttest/${id}`);
+    navigate(`/starttest/${id}`);
+  }
+  function handleBack(){
+    navigate("/studentDashboard")
   }
   return (
     <div className='instruction-main-container'>
       <div className="instruction-container">
       <h1>Instructions</h1>
       <ul>
-        <li>Number of Questions: 5</li>
-        <li>Duration: 30 minutes</li>
+        <li>Number of Questions: {queNumber}</li>
+        <li>Duration: {duration} minutes</li>
         <li>Do not switch tabs during the test</li>
         <li>Read each question carefully before answering.</li>
         <li>Review your answers before submitting the test.</li>
@@ -23,7 +44,10 @@ export default function Instruction() {
         <li>Do not use any external resources or assistance during the test.</li>
       </ul>
       <p>All the best!</p>
+      <div className='d-flex'>
       <button className="start-test-button" onClick={handleSubmit}>Start Test</button>
+      <button className="start-test-button" onClick={handleBack}>Back to Dashboard</button>
+      </div>
     </div>
     </div>
   )

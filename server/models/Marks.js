@@ -7,24 +7,18 @@ const markSchema = new mongoose.Schema({
   marks: [
     {
       subject: String,
-      score: Number
-    }
-  ],
-  totalMarks: Number,
-  incorrect: [
-    {
-      subject: String,
+      correctNumber: Number,
+      correctScore: Number,
+      notSelectedNumber: Number,
+      notSelectedScore: Number,
       incorrectNumber: Number,
       incorrectScore: Number
     }
   ],
-  notSelected: [
-    {
-      subject : String,
-      notSelectedNumber: Number,
-      notSelectedScore: Number
-    }
-  ]
+  correctMarks: Number,
+  notSelectedMarks: Number,
+  incorrectMarks: Number
+  
 });
 
 const MarksModel = mongoose.model('Mark', markSchema);

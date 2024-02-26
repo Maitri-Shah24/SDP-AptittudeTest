@@ -282,6 +282,7 @@ app.post("/test/:id/studentMarks/:userid" , async(req,res)=>{
     MarksModel.findOne({student:studentId, test:testId}).then((existing)=>
     {
       if(existing){
+        res.json(null);
         return;
       }
       else{
@@ -289,9 +290,10 @@ app.post("/test/:id/studentMarks/:userid" , async(req,res)=>{
           student:studentId,
           test: testId,
           marks: req.body.subjectMarks,
-          totalMarks: req.body.totalMarks,
-          incorrect: req.body.incorrect,
-          notSelected: req.body.notSelected
+          correctMarks: req.body.correctMarks,
+          notSelectedMarks: req.body.notSelectedMarks,
+          incorrectMarks: req.body.incorrectMarks
+
         })
         res.json(studentMarks);
       }
@@ -304,6 +306,22 @@ app.post("/test/:id/studentMarks/:userid" , async(req,res)=>{
     res.status(500).json({ error: error.message });
   }
 
+})
+
+app.get("/test/:id/:user/result", async(req,res)=>{
+
+  try{
+    const studentMarks = await MarksModel.findOne({student:req.params.user, test:req.params.id});
+    const totalMarks = await TotalMarkModel.findOne({test: req.params.id});
+        res.json({totalMarks: totalMarks , studentMarks: studentMarks});
+  }
+  catch(error)
+  {
+    console.error("Error fetching marks",error);
+    res.status(500).json({error:error.message});
+  }
+
+  
 })
 
 app.listen(port, () => {

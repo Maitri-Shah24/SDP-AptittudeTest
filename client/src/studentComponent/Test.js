@@ -12,9 +12,9 @@ export default function Test() {
     const [selectedAnswers, setSelectedAnswers] = useState([]);
     const [questions, setQuestions] = useState([]);
     const marks = [];
-    const incorrect = [];
-    const notSelected = [];
-    var totalMarks = 0;
+    var correctMarks = 0;
+    var notSelectedMarks = 0;
+    var incorrectMarks = 0;
     const { user } = useSession();
     const [time, setTime] = useState(() => {
       const storedTime = localStorage.getItem(`testTime_${id}`);
@@ -120,17 +120,10 @@ export default function Test() {
         response.data.map((sub)=>{
             marks.push({
               subject: sub.subject,
-              score: 0
-            })
-
-            notSelected.push({
-              subject: sub.subject,
+              correctNumber: 0,
+              correctScore: 0,
               notSelectedNumber: 0,
-              notSelectedScore: 0
-            })
-
-            incorrect.push({
-              subject: sub.subject,
+              notSelectedScore: 0,
               incorrectNumber: 0,
               incorrectScore:0
             })
@@ -142,29 +135,32 @@ export default function Test() {
           if(selectedAnswers[dataIndex] === data["answer"])
           {
               const subjectIndex = marks.findIndex(subject => subject.subject === data.courseID);
-              marks[subjectIndex]["score"]+=data.weightage;
-              totalMarks += parseInt(data.weightage);
+              marks[subjectIndex]["correctScore"]+=data.weightage;
+              marks[subjectIndex]["correctNumber"]+=1;
+              correctMarks += parseInt(data.weightage);
           }
           else if(selectedAnswers[dataIndex] === undefined)
           {
-            const subjectIndex = notSelected.findIndex(subject => subject.subject === data.courseID);
-            notSelected[subjectIndex]["notSelectedScore"]+=data.weightage;
-            notSelected[subjectIndex]["notSelectedNumber"]+=1; 
+            const subjectIndex = marks.findIndex(subject => subject.subject === data.courseID);
+            marks[subjectIndex]["notSelectedScore"]+=data.weightage;
+            marks[subjectIndex]["notSelectedNumber"]+=1; 
+            notSelectedMarks += parseInt(data.weightage);
 
           }
           else
           {
-            const subjectIndex = incorrect.findIndex(subject => subject.subject === data.courseID);
-            incorrect[subjectIndex]["incorrectNumber"]+=1;
-            incorrect[subjectIndex]["incorrectScore"]+=data.weightage;
+            const subjectIndex = marks.findIndex(subject => subject.subject === data.courseID);
+            marks[subjectIndex]["incorrectNumber"]+=1;
+            marks[subjectIndex]["incorrectScore"]+=data.weightage;
+            incorrectMarks += parseInt(data.weightage);
           }
         }
         )
         console.log(user)
         const userid = user;
-        await axios.post(`http://localhost:8000/test/${id}/studentMarks/${userid}`,{subjectMarks: marks, totalMarks : totalMarks, incorrect : incorrect, notSelected: notSelected});
+        await axios.post(`http://localhost:8000/test/${id}/studentMarks/${userid}`,{subjectMarks: marks, correctMarks : correctMarks, notSelectedMarks: notSelectedMarks, incorrectMarks: incorrectMarks});
         console.log("submited")
-        navigate("/result");
+        navigate("/result",{ state: { testId: id } });
         
   }
 

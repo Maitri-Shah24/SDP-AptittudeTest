@@ -11,10 +11,10 @@ import zIndex from '@mui/material/styles/zIndex';
 export default function StudentDashboard() {
 
   const [currentComponent, setCurrentComponent] = useState('Test List');
-
+  console.log(currentComponent)
   const renderCurrentComponent = () => {
     
-    switch (currentComponent) {
+    switch (currentComponent.text) {
       case 'Test List':
         console.log(currentComponent)
         return <StudentTestList />;
