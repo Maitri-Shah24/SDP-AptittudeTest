@@ -1,13 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const SessionContext = createContext();
 
 export const SessionProvider = ({ children, initialUser }) => {
   const [user, setUser] = useState(initialUser);
-
-  useEffect(() => {
-    setUser(initialUser);
-  }, [initialUser]);
+  console.log(user);
 
   return (
     <SessionContext.Provider value={{ user, setUser }}>

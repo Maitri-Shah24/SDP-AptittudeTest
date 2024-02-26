@@ -31,7 +31,9 @@ import Profile from './studentComponent/profile';
 function App() {
 
   const storedUser = localStorage.getItem('user');
+  console.log(storedUser);
   const initialUser = storedUser ? JSON.parse(storedUser) : null;
+  console.log(initialUser);
   return (
    <>
   <BrowserRouter>

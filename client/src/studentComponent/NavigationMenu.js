@@ -5,20 +5,21 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import CategoryIcon from '@mui/icons-material/Category';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
-const NavigationMenu = () => {
+const NavigationMenu = ({ onItemClick }) => {
   const [open, setOpen] = useState(true);
   
   const menuItems = [
+    {
+      text: "Test List",
+      icon: <UpcomingIcon  fontSize={!open ? "large" : "small"}/>,
+      path : "/upcomingtest"
+    },
     {
         text: "History",
         icon: <HistoryIcon  fontSize={!open ? "large" : "small"}/>,
         path: "/history"    
     },
-    {
-        text: "Upcoming Test",
-        icon: <UpcomingIcon  fontSize={!open ? "large" : "small"}/>,
-        path : "/upcomingtest"
-    },
+   
     {
         text: "Results",
         icon: <CategoryIcon  fontSize={!open ? "large" : "small"}/>,
@@ -55,11 +56,11 @@ const NavigationMenu = () => {
         </div>
         <div className="nav-menu">
             {menuItems.map(({text, icon,path}) => 
-                <a href={path} className={open ? "menu-item" : "menu-item menu-item-NX"}>
+                <div className={open ? "menu-item" : "menu-item menu-item-NX"} onClick={()=> onItemClick({text})}>
                     <p>{icon}</p>
                     <p>{open && <p>{text}</p>}</p>
                     <p>{!open && <div className="tooltip">{text}</div>}</p>
-                </a>
+                </div>
                 )}
         </div>
       </div>

@@ -99,9 +99,7 @@ export default function SampleQues() {
 
   return (
    <>
-        <StudentNavbar/>
-        <div className='d-flex'>
-        <NavigationMenu/>
+        
        <div className="container mt-5">
         <h2 className="mb-4 subject-heading">Subjects</h2>
             <div className="row">
@@ -120,7 +118,7 @@ export default function SampleQues() {
                 ))}
             </div>
         </div>
-        </div>
+    
         </>
     );
   

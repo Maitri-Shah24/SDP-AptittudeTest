@@ -13,6 +13,7 @@ export default function Test() {
     const [questions, setQuestions] = useState([]);
     const marks = [];
     const incorrect = [];
+    const notSelected = [];
     var totalMarks = 0;
     const { user } = useSession();
     const [time, setTime] = useState(() => {
@@ -54,7 +55,6 @@ export default function Test() {
             setQuestions(response.data);
             const response2 = await axios.get(`http://localhost:8000/test/${id}/duration`);
             const timeMillisecond = parseInt(response2.data.duration * 60 * 1000);
-            console.log(timeMillisecond)
             setTestName(response2.data.testName);
             setTime(prevTime => {
               const storedTime = localStorage.getItem(`testTime_${id}`);
@@ -123,33 +123,47 @@ export default function Test() {
               score: 0
             })
 
+            notSelected.push({
+              subject: sub.subject,
+              notSelectedNumber: 0,
+              notSelectedScore: 0
+            })
+
             incorrect.push({
               subject: sub.subject,
-              incorrectNumber: 0
+              incorrectNumber: 0,
+              incorrectScore:0
             })
         })
+
+        console.log(selectedAnswers);
   
         questions.map((data,dataIndex)=>{
-          console.log(data)
-          console.log(dataIndex)
           if(selectedAnswers[dataIndex] === data["answer"])
           {
               const subjectIndex = marks.findIndex(subject => subject.subject === data.courseID);
               marks[subjectIndex]["score"]+=data.weightage;
               totalMarks += parseInt(data.weightage);
           }
+          else if(selectedAnswers[dataIndex] === undefined)
+          {
+            const subjectIndex = notSelected.findIndex(subject => subject.subject === data.courseID);
+            notSelected[subjectIndex]["notSelectedScore"]+=data.weightage;
+            notSelected[subjectIndex]["notSelectedNumber"]+=1; 
+
+          }
           else
           {
-            const subjectIndex = marks.findIndex(subject => subject.subject === data.courseID);
+            const subjectIndex = incorrect.findIndex(subject => subject.subject === data.courseID);
             incorrect[subjectIndex]["incorrectNumber"]+=1;
+            incorrect[subjectIndex]["incorrectScore"]+=data.weightage;
           }
         }
         )
-
-        const userid = user.id;
-
-        await axios.post(`http://localhost:8000/test/${id}/studentMarks/${userid}`,{subjectMarks: marks, totalMarks : totalMarks, incorrect : incorrect});
-
+        console.log(user)
+        const userid = user;
+        await axios.post(`http://localhost:8000/test/${id}/studentMarks/${userid}`,{subjectMarks: marks, totalMarks : totalMarks, incorrect : incorrect, notSelected: notSelected});
+        console.log("submited")
         navigate("/result");
         
   }

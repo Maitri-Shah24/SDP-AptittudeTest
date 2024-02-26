@@ -14,7 +14,15 @@ const markSchema = new mongoose.Schema({
   incorrect: [
     {
       subject: String,
-      incorrectNumber: Number
+      incorrectNumber: Number,
+      incorrectScore: Number
+    }
+  ],
+  notSelected: [
+    {
+      subject : String,
+      notSelectedNumber: Number,
+      notSelectedScore: Number
     }
   ]
 });

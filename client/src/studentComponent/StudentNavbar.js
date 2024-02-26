@@ -8,6 +8,11 @@ export default function StudentNavbar() {
   const handleProfileClick=()=>{
     navigate("/profile");
   }
+  const handleLogout=()=>{
+    localStorage.removeItem('user');
+    navigate("/");
+
+  }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark nav-bg-color sticky-top">
@@ -42,7 +47,7 @@ export default function StudentNavbar() {
                   <li><a className="dropdown-item" href="profile" onClick={handleProfileClick}><i className="fas fa-sliders-h fa-fw"></i> My Profile</a></li>
                   <li><a className="dropdown-item" href="#"><i className="fas fa-cog fa-fw"></i> Settings</a></li>
                   <li><hr className="dropdown-divider" /></li>
-                  <li><a className="dropdown-item" href="#"><i className="fas fa-sign-out-alt fa-fw"></i> Log Out</a></li>
+                  <li><a className="dropdown-item" href="#" onClick={handleLogout}><i className="fas fa-sign-out-alt fa-fw"></i> Log Out</a></li>
                 </ul>
               </li>
             </ul>

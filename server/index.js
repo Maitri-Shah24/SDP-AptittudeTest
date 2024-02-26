@@ -275,6 +275,7 @@ app.get("/test/:id/getSubjects" , async(req,res)=>
 app.post("/test/:id/studentMarks/:userid" , async(req,res)=>{
   try{
 
+    console.log(req.params.userid)
     const testId = req.params.id;
     const studentId = req.params.userid;
 
@@ -289,8 +290,10 @@ app.post("/test/:id/studentMarks/:userid" , async(req,res)=>{
           test: testId,
           marks: req.body.subjectMarks,
           totalMarks: req.body.totalMarks,
-          incorrect: req.body.incorrect
+          incorrect: req.body.incorrect,
+          notSelected: req.body.notSelected
         })
+        res.json(studentMarks);
       }
     })
     
