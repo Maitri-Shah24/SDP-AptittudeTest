@@ -20,6 +20,7 @@ export default function Test() {
       const storedTime = localStorage.getItem(`testTime_${id}`);
       return storedTime ? parseInt(storedTime, 10) : 0;
   });
+  const userId = user ? user.id : null;
   const [testName,setTestName]=useState("");
 
   const [tabSwitchCount, setTabSwitchCount] = useState(0);
@@ -49,6 +50,9 @@ export default function Test() {
     }, [tabSwitchCount]);
 
   useEffect(() => {
+    if (!id) {
+      return; // If id is not available, don't proceed with fetching questions
+  }
     const fetchQuestions = async () => {
         try {
             const response = await axios.get(`http://localhost:8000/test/${id}/questions`);
@@ -157,8 +161,8 @@ export default function Test() {
         }
         )
         console.log(user)
-        const userid = user;
-        await axios.post(`http://localhost:8000/test/${id}/studentMarks/${userid}`,{subjectMarks: marks, correctMarks : correctMarks, notSelectedMarks: notSelectedMarks, incorrectMarks: incorrectMarks});
+        // const userId = user ? user.id : null;
+        await axios.post(`http://localhost:8000/test/${id}/studentMarks/${userId}`,{subjectMarks: marks, correctMarks : correctMarks, notSelectedMarks: notSelectedMarks, incorrectMarks: incorrectMarks});
         console.log("submited")
         navigate("/result",{ state: { testId: id } });
         
@@ -167,7 +171,7 @@ export default function Test() {
   return (
     
     <div className='test-main-container'>
-      {user.id}
+      {userId}
         <h2 className='gradient-underline'>{testName}</h2>
         <div className='timer-container'>
               <i className='fas fa-clock'></i>

@@ -23,8 +23,9 @@ import ContactUs from './studentComponent/ContactUs';
 import { SessionProvider } from './components/SessionContext';
 import ProAbout from './professorComp/Proabout';
 import ProContact from './professorComp/ProContact';
-import Profile from './studentComponent/profile';
 import StudentResult from './studentComponent/StudentResult';
+import StudentProfile from './studentComponent/StudentProfile';
+
 
 
 
@@ -32,16 +33,25 @@ import StudentResult from './studentComponent/StudentResult';
 function App() {
 
   const storedUser = localStorage.getItem('user');
+  let initialUser = null;
   console.log(storedUser);
-  const initialUser = storedUser ? JSON.parse(storedUser) : null;
-  console.log(initialUser);
+
+   try{
+     initialUser = storedUser ? JSON.parse(storedUser) : null;
+     console.log(initialUser);
+  }
+  catch(error)
+  {
+    console.log("Error in parsing JSON",error)
+  }
+ 
   return (
    <>
   <BrowserRouter>
    <SessionProvider initialUser={initialUser}>
     <Routes>
       <Route exact path="/login" Component={Login} />
-      <Route exact path="/profile" Component={Profile} />
+      <Route exact path="/profile" Component={StudentProfile} />
       <Route exact path="/register" Component={Register} />
       <Route exact path="/" Component={Select}/>
       <Route exact path="/addQue/:testId" Component={AddQue}/>

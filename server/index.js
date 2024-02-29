@@ -43,6 +43,7 @@ app.get('/profile/:studentId', async (req, res) => {
   try {
     const studentId = req.params.studentId;
     const student = await StudentModel.findOne({ studentId: studentId });
+    console.log(student);
     if (!student) {
       return res.status(404).json({ error: 'Student not found' });
     }
