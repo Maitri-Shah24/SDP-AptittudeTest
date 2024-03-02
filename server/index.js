@@ -325,6 +325,26 @@ app.get("/test/:id/:user/result", async(req,res)=>{
   
 })
 
+app.get("/test/:user/historyresult",async(req,res)=>{
+  try{
+    const studentMarks = await MarksModel.find({student:req.params.user});
+    console.log(studentMarks);
+    const test = studentMarks.map(result=>result.test);
+
+    const testName = test.map(async(testId)=>{
+      const test = await TestModel.findById(testId);
+      return test.testName;
+    })
+
+    const testNames = await Promise.all(testName);
+
+    res.json({studentMarks:studentMarks, testName:testNames});
+  }catch(error){
+    console.error("Error fetching marks",error);
+    res.status(500).json({error:error.message});
+  }
+})
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
