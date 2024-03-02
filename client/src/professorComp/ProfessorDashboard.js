@@ -1,25 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TestList from './TestList'
 import ProfessorNavbar from './ProfessorNavbar'
-import { Grid } from '@mui/material'
-import ProNavigation from './ProNavigation'
 import ProNavigationMenu from './ProNavigationMenu'
+import SampleQues from '../studentComponent/SampleQues'
+import AddTest from './AddTest'
 
 
 
 export default function Dashboard() {
+  const [currentComponent, setCurrentComponent] = useState('Test List');
+  console.log(currentComponent)
+  const renderCurrentComponent = () => {
+    
+    switch (currentComponent.text) {
+      case 'Test List':
+        console.log(currentComponent)
+        return <TestList />;
+      case 'Sample Questions':
+        console.log(currentComponent)
+        return <SampleQues/>;
+      case 'Schedule Test':
+        return <AddTest/>;
+      default:
+        console.log('default')
+        return <TestList />;
+    }
+  };
   return (
        <>
       <ProfessorNavbar/>
-      <ProNavigationMenu/>
-      {/* <Grid container className="px-5 lg:px-9 justify-between">
-        <Grid item xs={12} lg={3} className="w-full lg:relative lg:sticky lg:top-0">
-          <ProNavigation className='text-blue-500' />
-        </Grid>
-        <Grid item xs={12} lg={9} className='px-5'>
-          <TestList/>
-        </Grid>
-      </Grid> */}
+      <div style={{ display: 'flex' }}>
+        <ProNavigationMenu onItemClick={(component) => setCurrentComponent(component)}/>
+         {renderCurrentComponent()}
+      </div>
     </>  
    
   );
