@@ -13,7 +13,7 @@ export default function TestList(){
   }, []); 
 
   return (
-    <div>
+    
       <div className='TestList-container'>
       <h2 className='gradient-underline'>Test List</h2>
       <div className="test-card-container">
@@ -31,7 +31,7 @@ export default function TestList(){
       </div>
      
     </div>
-    </div>
+   
   );
 };
 

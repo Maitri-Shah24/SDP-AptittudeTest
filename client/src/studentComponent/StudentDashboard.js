@@ -7,6 +7,7 @@ import moment from 'moment-timezone';
 import { resolveDateFormat } from '@mui/x-date-pickers/internals/utils/date-utils';
 import NavigationMenu from './NavigationMenu';
 import zIndex from '@mui/material/styles/zIndex';
+import History from './History';
 
 export default function StudentDashboard() {
 
@@ -21,6 +22,8 @@ export default function StudentDashboard() {
       case 'Sample Questions':
         console.log(currentComponent)
         return <SampleQues/>;
+      case 'History':
+        return <History/>;
       default:
         console.log('default')
         return <StudentTestList />;

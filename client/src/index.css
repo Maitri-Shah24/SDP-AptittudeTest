@@ -407,13 +407,16 @@ video{
   object-fit: cover;
   opacity: 0.5;
 }
-
-.card{
+/* ==================sampleQues=================s */
+.sample-container{
+  margin: 30px;
+}
+.card-sample-ques{
   background:rgba(89, 232, 206, 0.445);
   transition: transform 0.3s ease;
   border-color: #fff;
 }
-.card:hover{
+.card-sample-ques:hover{
   transform: scale(1.05);
   box-shadow: 4px 4px 8px rgba(27, 213, 179, 0.752);
 }
@@ -435,6 +438,7 @@ video{
 
 .sample-link {
   text-decoration: none;
+  color: black;
 }
 
 .question-page-container h2{
@@ -636,7 +640,6 @@ background-clip: text;
 
 .side-container{
     background:  #f8f8f8;
-    width: 390px;
     position: sticky;
     color: rgba(0, 0, 0, 0.764);
     transition: 0.4s;
@@ -836,7 +839,6 @@ background-clip: text;
   }
 }
 
-/* =======================TestList=============== */
 .TestList-container h2
 {
   text-align: center; 
@@ -1572,3 +1574,41 @@ button.bg-secondary:focus {
   }
 }
 
+/* =========================history================= */
+
+.history-container{
+  margin: 100px;
+  padding: 20px;
+}
+/* ================result=============== */
+.back-button {
+  display: flex;
+  height: 3em;
+ 
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee4b;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: none;
+  background: #fff;
+ }
+ 
+ .back-button > svg {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  transition: all 0.4s ease-in;
+ }
+ 
+ .back-button:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+ }
+ 
+ .back-button:hover {
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
+ }

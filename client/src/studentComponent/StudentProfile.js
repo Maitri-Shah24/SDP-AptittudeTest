@@ -38,7 +38,6 @@ export  function StudentProfile() {
 
   return (
     <div>
-      
       <StudentNavbar/>
       {/* <div className="container text-center"> */}
         {/* <div className="col"> */}
@@ -77,7 +76,6 @@ export  function StudentProfile() {
                             id="input-username"
                             class="form-control form-control-alternative"
                             placeholder="Username"
-                            value="IT132"
                           />
                         </div>
                       </div>

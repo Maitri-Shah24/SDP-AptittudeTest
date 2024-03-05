@@ -3,23 +3,28 @@ import UpcomingIcon from '@mui/icons-material/Upcoming';
 import CategoryIcon from '@mui/icons-material/Category';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
-const ProNavigationMenu = () => {
+const ProNavigationMenu = ({ onItemClick }) => {
   const [open, setOpen] = useState(true);
   
   const menuItems = [
     {
+      text: "Test List",
+      icon: <UpcomingIcon  fontSize={!open ? "large" : "small"}/>,
+      path : "/upcomingtest"
+    },
+    {
         text: "Result",
-        icon: <CategoryIcon />,
+        icon: <CategoryIcon fontSize={!open ? "large" : "small"}/>,
         path: "/overallresult"    
     },
     {
         text: "Schedule Test",
-        icon: <UpcomingIcon />,
+        icon: <UpcomingIcon fontSize={!open ? "large" : "small"} />,
         path : "/addtest"
     },
     {
         text: "Sample Questions",
-        icon: <AutoAwesomeIcon/>,
+        icon: <AutoAwesomeIcon fontSize={!open ? "large" : "small"}/>,
         path: "/sampleque"
 
     },
@@ -43,11 +48,11 @@ const ProNavigationMenu = () => {
         </div>
         <div className="nav-menu">
             {menuItems.map(({text, icon,path}) => 
-                <a href={path} className={open ? "menu-item" : "menu-item menu-item-NX"}>
+                <div className={open ? "menu-item" : "menu-item menu-item-NX"} onClick={()=> onItemClick({text})}>
                     <p>{icon}</p>
                     <p>{open && <p>{text}</p>}</p>
                     <p>{!open && <div className="tooltip">{text}</div>}</p>
-                </a>
+                </div>
                 )}
         </div>
       </div>
