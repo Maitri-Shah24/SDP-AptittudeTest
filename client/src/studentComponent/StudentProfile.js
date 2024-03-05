@@ -40,15 +40,14 @@ export  function StudentProfile() {
     <div>
       
       <StudentNavbar/>
-      <NavigationMenu/>
-      <div className="container text-center">
-        <div className="col">
-          <div class="col-xl-8 order-xl-1">
+      {/* <div className="container text-center"> */}
+        {/* <div className="col"> */}
+          <div class="col-xl-6 order-xl-5">
             <div class="card bg-secondary shadow">
               <div class="card-header bg-white border-0">
                 <div class="row align-items-center">
                   <div class="col-8">
-                    <h6 style={{position:"relative",right:"150px",fontFamily:"sans-serif",fontWeight:"bold",color:"#525f7f"}} class="mb-0">My Profile</h6>
+                    <h6 style={{fontFamily:"sans-serif",fontWeight:"bold",color:"#525f7f"}} class="mb-0">My Profile</h6>
                   </div>
                   <div class="col-4 text-right">
                     <a href="/profile" class="btn btn-sm btn-primary">
@@ -59,7 +58,7 @@ export  function StudentProfile() {
               </div>
               <div class="card-body">
                 <form>
-                  <h6 style={{fontSize:"13px",right:"35%",position:"relative"}} class="heading-small text-muted mb-4">
+                  <h6 style={{fontSize:"13px"}} class="heading-small text-muted mb-4">
                     User information
                   </h6>
                   <div class="pl-lg-4">
@@ -69,7 +68,7 @@ export  function StudentProfile() {
                           <label
                             class="form-control-label"
                             for="input-username"
-                            style={{right:"35%",position:"relative"}}
+                      
                           >
                             Student ID
                           </label>
@@ -83,8 +82,8 @@ export  function StudentProfile() {
                         </div>
                       </div>
                       <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label" for="input-email" style={{right:"35%",position:"relative"}}>
+                        <div class="form-group"> 
+                          <label class="form-control-label" for="input-email" >
                             Email address
                           </label>
                           <input
@@ -102,7 +101,7 @@ export  function StudentProfile() {
                           <label
                             class="form-control-label"
                             for="input-first-name"
-                            style={{right:"35%",position:"relative"}}
+                           
                           >
                             First name
                           </label>
@@ -120,7 +119,7 @@ export  function StudentProfile() {
                           <label
                             class="form-control-label"
                             for="input-last-name"
-                            style={{right:"35%",position:"relative"}}
+                           
                           >
                             Last name
                           </label>
@@ -139,8 +138,8 @@ export  function StudentProfile() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        {/* </div> */}
+      {/* </div> */}
     </div>
   );
 }

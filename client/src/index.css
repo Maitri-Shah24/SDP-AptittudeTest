@@ -1311,14 +1311,14 @@ a {
 
 .btn-primary {
   color: #fff;
-  border-color:rgba(40, 143, 124, 0.388);
-  background-color:rgba(40, 143, 124, 0.388);
+  border-color:rgba(27, 210, 177, 0.388);
+  background-color:rgba(27, 210, 177, 0.509);
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .btn-primary:hover {
   color: #fff;
-  border-color:rgba(40, 143, 124, 0.388);
+  border-color:rgba(27, 210, 177, 0.388);
   background-color:rgba(40, 143, 124, 0.388);
 }
 
@@ -1362,6 +1362,8 @@ a {
   border-radius: 0.375rem;
   background-color: #fff;
   background-clip: border-box;
+  /* margin-top: 50px; 
+  padding: 20px;  */
 }
 
 .card > hr {
