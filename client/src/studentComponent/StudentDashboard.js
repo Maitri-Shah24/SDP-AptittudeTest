@@ -8,6 +8,7 @@ import { resolveDateFormat } from '@mui/x-date-pickers/internals/utils/date-util
 import NavigationMenu from './NavigationMenu';
 import zIndex from '@mui/material/styles/zIndex';
 import History from './History';
+import Result from './Result';
 
 export default function StudentDashboard() {
 
@@ -24,6 +25,8 @@ export default function StudentDashboard() {
         return <SampleQues/>;
       case 'History':
         return <History/>;
+      case 'Results':
+        return <Result/>
       default:
         console.log('default')
         return <StudentTestList />;

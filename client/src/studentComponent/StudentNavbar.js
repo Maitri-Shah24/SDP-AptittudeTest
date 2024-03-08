@@ -41,9 +41,9 @@ export default function StudentNavbar() {
                   </div>
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a className="dropdown-item" href="profile" onClick={handleProfileClick}><i className="fas fa-sliders-h fa-fw"></i> My Profile</a></li>
+                  <li><div className="dropdown-item" onClick={handleProfileClick}><i className="fas fa-sliders-h fa-fw"></i> My Profile</div></li>
                   <li><hr className="dropdown-divider" /></li>
-                  <li><a className="dropdown-item" href="#" onClick={handleLogout}><i className="fas fa-sign-out-alt fa-fw"></i> Log Out</a></li>
+                  <li><div className="dropdown-item" onClick={handleLogout}><i className="fas fa-sign-out-alt fa-fw"></i> Log Out</div></li>
                 </ul>
               </li>
             </ul>

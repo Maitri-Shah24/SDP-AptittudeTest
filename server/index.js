@@ -365,6 +365,22 @@ app.get("/test/:id/:user/result", async(req,res)=>{
   
 })
 
+app.get('/result/:user',async(req,res)=>{
+  try{
+      const studentID = req.params.user;
+      const marks = await MarksModel.find({ student: studentID });
+      console.log(marks);
+      const testIds = marks.map(mark => mark.test);
+      const tests = await TestModel.find({ _id: { $in: testIds } });
+      res.json({ tests: tests });
+
+  }
+  catch(error){
+    console.error("Error fetching results test",error);
+    res.status(500).json({error:error.message});
+  }
+})
+
 app.get("/test/:user/historyresult",async(req,res)=>{
   try{
     const studentMarks = await MarksModel.find({student:req.params.user});

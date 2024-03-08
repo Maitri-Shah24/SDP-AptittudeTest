@@ -8,15 +8,14 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 export default function StudentTestList(){
-  const [test,setTest] = useState([]);
+
   const [pastTests,setPastTests] = useState([]);
   const [currentTests, setCurrentTests] = useState([]);
   const [futureTests, setFutureTests] = useState([]);
   const timezone = 'Asia/Kolkata';
   const currentTime = moment().tz(timezone);
-  const navigate = useNavigate();
   const currentDate = currentTime.format('YYYY-MM-DD');
-  const currentTimeString = currentTime.format('HH:mm');
+
 
   useEffect(() => {
     const fetchTest = async () => {
@@ -61,9 +60,7 @@ export default function StudentTestList(){
   }, []); // Run only once on mount
 
 
-  const handlePastTest=(testId)=>{
-    navigate("/result",{ state: { testId: testId } });
-  }
+  
 
   return (
 

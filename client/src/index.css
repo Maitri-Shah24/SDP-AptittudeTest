@@ -327,6 +327,9 @@ section .flex-container:nth-child(even) div:nth-child(2){
   max-width: 600px;
    margin: auto;
     padding: 20px;
+    margin-top: 30px;
+    width: 600px;
+    
 }
 
 .add-que-container h2{
@@ -1616,3 +1619,64 @@ button.bg-secondary:focus {
   float: right;
   color: #525f7f;
  }
+
+ /* =============result=================== */
+ .result-container {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.overall-result {
+  padding: 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: rgba(27, 210, 177, 0.296);
+  border-radius: 10px;
+}
+
+.subject-score p{
+  font-size: 20px;
+  background-color:rgba(27, 210, 177, 0.296) ;
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.subject-result {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+
+.subject-result h2 {
+  margin-bottom: 10px;
+}
+
+.subject-score{
+  flex: 4;
+  min-width: 400px;
+}
+
+.total-question{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+/* Pie chart styles */
+.pie-chart {
+  flex: 1;
+  max-width: 300px; /* Adjust the max-width as needed */
+  height: 200px; /* Set the height to maintain aspect ratio */
+}

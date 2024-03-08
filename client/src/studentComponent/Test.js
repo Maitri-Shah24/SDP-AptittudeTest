@@ -20,7 +20,7 @@ export default function Test() {
       const storedTime = localStorage.getItem(`testTime_${id}`);
       return storedTime ? parseInt(storedTime, 10) : 0;
   });
-  const userId = user ? user.id : null;
+  const userId = user ? user : null;
   const [testName,setTestName]=useState("");
 
   const [tabSwitchCount, setTabSwitchCount] = useState(0);
@@ -171,7 +171,6 @@ export default function Test() {
   return (
     
     <div className='test-main-container'>
-      {userId}
         <h2 className='gradient-underline'>{testName}</h2>
         <div className='timer-container'>
               <i className='fas fa-clock'></i>

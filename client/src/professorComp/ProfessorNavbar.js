@@ -1,6 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProfessorNavbar() {
+  const navigate = useNavigate();
+
+  const handleLogout=()=>{
+    localStorage.removeItem('user');
+    navigate("/");
+
+  }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark nav-bg-color sticky-top">
@@ -29,9 +37,9 @@ export default function ProfessorNavbar() {
                   </div>
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a className="dropdown-item" href="/profile"><i className="fas fa-sliders-h fa-fw"></i> My Profile</a></li>
+                  <li><div className="dropdown-item" onClick={()=>navigate("/profile")}><i className="fas fa-sliders-h fa-fw"></i> My Profile</div></li>
                   <li><hr className="dropdown-divider" /></li>
-                  <li><a className="dropdown-item" href="#"><i className="fas fa-sign-out-alt fa-fw"></i> Log Out</a></li>
+                  <li><div className="dropdown-item"  onClick={handleLogout}><i className="fas fa-sign-out-alt fa-fw"></i> Log Out</div></li>
                 </ul>
               </li>
             </ul>
