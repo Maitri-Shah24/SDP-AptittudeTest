@@ -85,7 +85,7 @@ export default function StudentTestList(){
       <TabPanel >
       <div className="test-card-container">
         {pastTests.map(test => (
-          <div onClick={()=>handlePastTest(test._id)} className='test-card' style={{background:'rgba(89, 232, 206, 0.445)'}}>
+          <Link to={`/questionanswer/${test._id}`} className='test-card' style={{background:'rgba(89, 232, 206, 0.445)'}}>
           <div key={test._id}>
             <h3>{test.testName}</h3>
             <p>Duration: {test.duration} minutes</p>
@@ -93,7 +93,7 @@ export default function StudentTestList(){
             <p>Start Time: {test.startTime}</p>
             <p>End Time: {test.endTime}</p>
           </div>
-          </div>
+          </Link>
         ))}
       </div>
       </TabPanel>

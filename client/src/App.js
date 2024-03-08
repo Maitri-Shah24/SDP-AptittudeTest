@@ -18,21 +18,16 @@ import TestDetails from './professorComp/TestDetails';
 import StudentDashboard from './studentComponent/StudentDashboard';
 import Instruction from './studentComponent/Instruction';
 import Test from './studentComponent/Test';
-import AboutPage from './studentComponent/AboutPage';
-import ContactUs from './studentComponent/ContactUs';
+import AboutPage from './components/AboutPage';
 import { SessionProvider } from './components/SessionContext';
-import ProAbout from './professorComp/Proabout';
-import ProContact from './professorComp/ProContact';
 import StudentResult from './studentComponent/StudentResult';
-import StudentProfile from './studentComponent/StudentProfile';
-
-
-
+import StudentProfile from './components/Profile';
+import QuestionAnswer from './components/QuestionAnswer';
 
 
 function App() {
 
-  const storedUser = localStorage.getItem('user');
+  const storedUser = sessionStorage.getItem('user');
   let initialUser = null;
   console.log(storedUser);
 
@@ -66,12 +61,10 @@ function App() {
       <Route exact path="/test/:id" Component={TestDetails} />
       <Route exact path="/studentdashboard" Component={StudentDashboard}/>
       <Route exact path="/about" Component={AboutPage}/>
-      <Route exact path='/contactus' Component={ContactUs}/>
-      <Route exact path="/proabout" Component={ProAbout}/>
-      <Route exact path='/procontactus' Component={ProContact}/>
       <Route exact path="/instruction/:id" Component={Instruction}/>
       <Route exact path="/starttest/:id" Component={Test}/>
       <Route exact path='/result' Component={StudentResult}/>
+      <Route exact path='/questionanswer/:id' Component={QuestionAnswer}/>
     </Routes> 
     <ToastContainer/>
     </SessionProvider>

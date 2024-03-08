@@ -1,5 +1,5 @@
 import React from 'react';
-import StudentNavbar from './StudentNavbar';
+import StudentNavbar from '../studentComponent/StudentNavbar';
 import aboutus from '../Images/aboutus.jpg'
 
 function AboutPage() {

@@ -32,9 +32,6 @@ export default function StudentNavbar() {
               <li className="nav-item">
                 <a className="nav-link" href="/about">About Us</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/contactus">Contact Us</a>
-              </li>
             </ul>
             <ul className="navbar-nav me-4 mb-2 mb-lg-0 profile-menu">
               <li className="nav-item dropdown" >
@@ -45,7 +42,6 @@ export default function StudentNavbar() {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a className="dropdown-item" href="profile" onClick={handleProfileClick}><i className="fas fa-sliders-h fa-fw"></i> My Profile</a></li>
-                  <li><a className="dropdown-item" href="#"><i className="fas fa-cog fa-fw"></i> Settings</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="#" onClick={handleLogout}><i className="fas fa-sign-out-alt fa-fw"></i> Log Out</a></li>
                 </ul>

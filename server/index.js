@@ -39,22 +39,62 @@ app.post("/login", async (req, res) => {
   }
 )});
 
-app.get('/profile/:studentId', async (req, res) => {
+app.get('/profile/:userId', async (req, res) => {
   try {
-    const studentId = req.params.studentId;
-    const student = await StudentModel.findOne({ studentId: studentId });
-    console.log(student);
-    if (!student) {
-      return res.status(404).json({ error: 'Student not found' });
+    const studentId = req.params.userId;
+    const role = req.query.role; // Get the role from the query parameter
+    let user;
+
+    if (role === 'student') {
+      user = await StudentModel.findOne({ studentId: studentId });
+      console.log(user)
+    } else if (role === 'professor') {
+      user = await ProfessorModel.findOne({ professorId: studentId });
     }
-    console.log(student);
-    res.json(student);
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json(user);
   } catch (error) {
-    console.error('Error fetching student:', error);
+    console.error('Error fetching user:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
+
+app.put('/profile/:userId', async (req, res) => {
+  
+  try {
+    const userId = req.params.userId;
+    const role = req.query.role; // Get the role from the query parameter
+    let user;
+
+    if (role === 'student') {
+      user = await StudentModel.findOne({ studentId: userId });
+      const { studentId, email, firstName, lastName } = req.body;
+      user.studentId = studentId;
+      user.email = email;
+      user.firstName = firstName;
+      user.lastName = lastName;
+      await user.save();
+    } else if (role === 'professor') {
+      user = await ProfessorModel.findOne({ professorId: userId });
+      const { professorId, email, firstName, lastName } = req.body;
+      user.professorId = professorId;
+      user.email = email;
+      user.firstName = firstName;
+      user.lastName = lastName;
+      await user.save();
+    }
+
+    res.status(200).json({ message: 'Profile updated successfully' });
+  } catch (error) {
+    console.error('Error updating user profile:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
 app.post('/register',(req,res)=>{
 

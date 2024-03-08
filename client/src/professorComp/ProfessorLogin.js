@@ -3,10 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import VideoBackGround from '../components/VideoBackGround.js';
 import axios from "axios";
 import { toast} from "react-toastify";
+import { useSession } from "../components/SessionContext";
 
 export default function ProfessorLogin(props) {
     const [professorId, setProfessorId] = useState('');
     const [password, setPassword] = useState('');
+    const { setUser } = useSession();
 
     const history = useNavigate();
 
@@ -29,7 +31,9 @@ export default function ProfessorLogin(props) {
               pauseOnHover: true,
               style:{background:'white'}
             });
-            history("/professorhome", { state: { id: professorId } });
+            setUser({ id: professorId });
+            sessionStorage.setItem('user', professorId);
+            history("/professorhome");
           } else if (res.data === "notexist") {
             alert("User have not sign up");
           }

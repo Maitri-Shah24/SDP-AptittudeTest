@@ -106,7 +106,7 @@ export default function AddQue() {
              
           >
             {courseOptions.map((option, index) => (
-              <option key={index} value={option.toLowerCase()}>
+              <option key={index} value={option}>
                 {option}
               </option>
             ))}
