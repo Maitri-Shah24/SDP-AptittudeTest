@@ -2,26 +2,25 @@ import React, { useState, useEffect } from "react";
 import { useSession } from "./SessionContext";
 import axios from "axios";
 import StudentNavbar from "../studentComponent/StudentNavbar";
-import NavigationMenu from "../studentComponent/NavigationMenu";
 import ProfessorNavbar from "../professorComp/ProfessorNavbar";
 
 export function StudentProfile() {
   const [userInfo, setUserInfo] = useState(null);
   const [editing, setEditing] = useState(false);
-  const { user } = useSession();
-  const userId = user ? user : null;
+ const user = sessionStorage.getItem('user');
   const role = sessionStorage.getItem('userRole');
   console.log(role)
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      try {
-        if (!user) {
-          return; // Exit early if user doesn't exist
-        }
 
+      if (!user) {
+        return; // Return early if user is null or undefined
+      }
+
+      try {
         const response = await axios.get(
-          `http://localhost:8000/profile/${userId}?role=${role}`
+          `http://localhost:8000/profile/${user}?role=${role}`
         );
         if (response.status === 200) {
           setUserInfo(response.data);
@@ -30,19 +29,20 @@ export function StudentProfile() {
             "Failed to fetch user information:",
             response.statusText
           );
-        }
+          }
       } catch (error) {
         console.error("Error fetching user information:", error);
       }
+
     };
 
     fetchUserInfo();
-  }, [user]);
+  }, [user,role]);
 
   const handleSave = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/profile/${userId}?role=${role}`,
+        `http://localhost:8000/profile/${user}?role=${role}`,
         userInfo
       );
       if (response.status === 200) {

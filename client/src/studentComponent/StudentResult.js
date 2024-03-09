@@ -19,6 +19,7 @@ export default function StudentResult() {
     useEffect(() => {
         const fetchMarks = async () => {
             try {
+                console.log(user)
                 const response = await axios.get(`http://localhost:8000/test/${id}/${user}/result`);
                 setResult(response.data.studentMarks);
                 setTotalMarks(response.data.totalMarks);

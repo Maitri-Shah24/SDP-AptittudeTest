@@ -31,11 +31,11 @@ const NavigationMenu = ({ onItemClick }) => {
         path: "/sampleque"
 
     },
-    {
-        text: "Student Evaluation",
-        icon: <BarChartIcon fontSize={!open ? "large" : "small"}/>,
-        path: "/evaluation"
-    }
+    // {
+    //     text: "Student Evaluation",
+    //     icon: <BarChartIcon fontSize={!open ? "large" : "small"}/>,
+    //     path: "/evaluation"
+    // }
   ];
 
   return (

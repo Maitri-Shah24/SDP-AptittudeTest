@@ -41,15 +41,14 @@ app.post("/login", async (req, res) => {
 
 app.get('/profile/:userId', async (req, res) => {
   try {
-    const studentId = req.params.userId;
+    const userId = req.params.userId;
     const role = req.query.role; // Get the role from the query parameter
     let user;
 
     if (role === 'student') {
-      user = await StudentModel.findOne({ studentId: studentId });
-      console.log(user)
+      user = await StudentModel.findOne({ studentId: userId });
     } else if (role === 'professor') {
-      user = await ProfessorModel.findOne({ professorId: studentId });
+      user = await ProfessorModel.findOne({ professorId: userId });
     }
 
     if (!user) {
