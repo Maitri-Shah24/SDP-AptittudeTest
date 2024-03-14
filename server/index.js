@@ -364,6 +364,20 @@ app.get("/test/:id/:user/result", async(req,res)=>{
   
 })
 
+
+app.get("/test/:id/average-results",async(req,res)=>{
+  try{
+    const studentMarks = await MarksModel.find({ test:req.params.id});
+    const totalMarks = await TotalMarkModel.findOne({test: req.params.id});
+        res.json({totalMarks: totalMarks , studentMarks: studentMarks});
+  }
+  catch(error)
+  {
+    console.error("Error fetching marks",error);
+    res.status(500).json({error:error.message});
+  }
+})
+
 app.get('/result/:user',async(req,res)=>{
   try{
       const studentID = req.params.user;

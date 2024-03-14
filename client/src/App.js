@@ -23,6 +23,7 @@ import { SessionProvider } from './components/SessionContext';
 import StudentResult from './studentComponent/StudentResult';
 import StudentProfile from './components/Profile';
 import QuestionAnswer from './components/QuestionAnswer';
+import OverallResult from './professorComp/OverallResult';
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
       <Route exact path="/starttest/:id" Component={Test}/>
       <Route exact path='/result' Component={StudentResult}/>
       <Route exact path='/questionanswer/:id' Component={QuestionAnswer}/>
+      <Route exact path='/Studentresult/:id' Component={OverallResult}/>
     </Routes> 
     <ToastContainer/>
     </SessionProvider>

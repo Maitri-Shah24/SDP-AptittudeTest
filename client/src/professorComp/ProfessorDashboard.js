@@ -4,6 +4,7 @@ import ProfessorNavbar from './ProfessorNavbar'
 import ProNavigationMenu from './ProNavigationMenu'
 import SampleQues from '../studentComponent/SampleQues'
 import AddTest from './AddTest'
+import ResultTest from './ResultTest'
 
 
 
@@ -21,6 +22,8 @@ export default function Dashboard() {
         return <SampleQues/>;
       case 'Schedule Test':
         return <AddTest/>;
+      case 'Results':
+        return <ResultTest/>;
       default:
         console.log('default')
         return <TestList />;

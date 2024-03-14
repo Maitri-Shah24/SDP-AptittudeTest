@@ -13,7 +13,7 @@ const ProNavigationMenu = ({ onItemClick }) => {
       path : "/upcomingtest"
     },
     {
-        text: "Result",
+        text: "Results",
         icon: <CategoryIcon fontSize={!open ? "large" : "small"}/>,
         path: "/overallresult"    
     },
