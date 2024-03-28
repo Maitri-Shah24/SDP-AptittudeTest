@@ -5,15 +5,11 @@ import axios from 'axios';
 import { PieChart } from '@mui/x-charts/PieChart';
 
 export default function OverallResult() {
-    const location = useLocation();
     const {id} = useParams();
     const [totalMarks, setTotalMarks] = useState(null);
     const navigate = useNavigate();
-    const [totalCorrectNumber, setTotalCorrectNumber] = useState(0);
-    const [totalIncorrectNumber, setTotalIncorrectNumber] = useState(0);
-    const [totalNotSelectedNumber, setTotalNotSelectedNumber] = useState(0);
+    const [averageResults, setAverageResults] = useState(null); 
     const [totalQuestion, setTotalQuestion] = useState(0);
-    const [averageResults, setAverageResults] = useState(null); // Average results for all students
     
     useEffect(() => {
         const fetchAverageResults = async () => {
@@ -21,7 +17,8 @@ export default function OverallResult() {
                 const response = await axios.get(`http://localhost:8000/test/${id}/average-results`);
                 setAverageResults(response.data.studentMarks);
                 setTotalMarks(response.data.totalMarks);
-                console.log("Result ",response.data.studentMarks);
+                const updatedTotalQuestion = response.data.studentMarks[0].marks.reduce((acc, data) => acc + data.correctNumber + data.incorrectNumber + data.notSelectedNumber, 0);
+                setTotalQuestion(updatedTotalQuestion);
             } catch (error) {
                 console.log("Fetching average results error: " + error);
             }
@@ -33,74 +30,65 @@ export default function OverallResult() {
         // }
     }, [id]);
 
-    if (!averageResults) {
+    if (!averageResults && !totalMarks) {
         return <div>Loading...</div>;
     }
 
-    let subjectAverages = {};
+    const averageMarks = [];
 
-    const averageSubjectResults = averageResults.map((subjectResult) => {
+    averageResults[0].marks.map((subjectResult) => {
+        averageMarks.push({
+            subject: subjectResult.subject,
+            correctNumber: 0,
+            correctScore: 0,
+            notSelectedNumber: 0,
+            notSelectedScore: 0,
+            incorrectNumber: 0,
+            incorrectScore:0
+          })
 
+    })
+    
+    averageResults.map((subjectResult)=>{
+        subjectResult.marks.map((result)=>{
+            const subjectIndex = averageMarks.findIndex(subject => subject.subject === result.subject);
+            averageMarks[subjectIndex]["correctNumber"]+=result.correctNumber;
+            averageMarks[subjectIndex]["correctScore"]+=result.correctScore;
+            averageMarks[subjectIndex]["incorrectNumber"]+=result.incorrectNumber;
+            averageMarks[subjectIndex]["incorrectScore"]+=result.incorrectScore;
+            averageMarks[subjectIndex]["notSelectedNumber"]+=result.notSelectedNumber;
+            averageMarks[subjectIndex]["notSelectedScore"]+=result.notSelectedScore;
+        })
+    })
 
-        // subjectResult.marks.map((subjectData)=>{
-        //         console.log(subjectData.subject)
-        //         if (!subjectAverages[subjectData.subject]) {
-        //             subjectAverages[subjectData.subject] = { correctScore: 0, correctNumber: 0, incorrectNumber:0,incorrectScore:0,notSelectedNumber:0,notSelectedScore:0 };
-        //         }
-        //         subjectAverages[subjectData.subject].correctScore += subjectData.correctScore;
-        //         subjectAverages[subjectData.subject].correctNumber+= subjectData.correctNumber;
-        //         subjectAverages[subjectData.subject].incorrectScore += subjectData.incorrectScore;
-        //         subjectAverages[subjectData.subject].correctNumber+= subjectData.correctNumber;
-        //         subjectAverages[subjectData.subject].correctScore += subjectData.correctScore;
-        //         subjectAverages[subjectData.subject].correctNumber+= subjectData.correctNumber;
+    const averageSubjectResults = averageMarks.map((result)=>{
+        return {
+            subject: result.subject,
+            correctNumber: result.correctNumber/averageResults.length,
+            correctScore: result.correctScore/averageResults.length,
+            incorrectNumber: result.incorrectNumber/averageResults.length,
+            incorrectScore: result.incorrectScore/averageResults.length,
+            notSelectedNumber: result.notSelectedNumber/averageResults.length,
+            notSelectedScore: result.notSelectedScore/averageResults.length,
+        };
+    })
 
-        // })
-        if (Array.isArray(subjectResult.marks)) {
-            const totalStudents = subjectResult.marks.length;
-    
-            // Flatten the marks array to calculate the total number of questions and total marks for each subject
-            const flatMarks = subjectResult.marks.flatMap(student => student);
-    
-            const totalCorrectNumber = flatMarks.reduce((acc, student) => acc + student.correctNumber, 0);
-            const totalIncorrectNumber = flatMarks.reduce((acc, student) => acc + student.incorrectNumber, 0);
-            const totalNotSelectedNumber = flatMarks.reduce((acc, student) => acc + student.notSelectedNumber, 0);
-    
-            const totalCorrectScore = flatMarks.reduce((acc, student) => acc + student.correctScore, 0);
-            const totalIncorrectScore = flatMarks.reduce((acc, student) => acc + student.incorrectScore, 0);
-            const totalNotSelectedScore = flatMarks.reduce((acc, student) => acc + student.notSelectedScore, 0);
-    
-            const averageCorrectNumber = totalCorrectNumber / totalStudents;
-            const averageIncorrectNumber = totalIncorrectNumber / totalStudents;
-            const averageNotSelectedNumber = totalNotSelectedNumber / totalStudents;
-    
-            const averageCorrectScore = totalCorrectScore / totalStudents;
-            const averageIncorrectScore = totalIncorrectScore / totalStudents;
-            const averageNotSelectedScore = totalNotSelectedScore / totalStudents;
-    
-            return {
-                subject: subjectResult.subject,
-                averageCorrectNumber,
-                averageIncorrectNumber,
-                averageNotSelectedNumber,
-                averageCorrectScore,
-                averageIncorrectScore,
-                averageNotSelectedScore,
-            };
-        }
-        return null;
-    }).filter(result => result !== null);
-    
-    console.log(averageSubjectResults);
-    
-    
+    console.log(averageSubjectResults)
 
     const overallAverageResult = {
-        averageCorrectScore: averageResults.reduce((acc, subjectResult) => acc + subjectResult.correctMarks, 0) / averageSubjectResults.length,
-        averageNotSelectedScore: averageResults.reduce((acc, subjectResult) => acc + subjectResult.notSelectedMarks, 0) / averageSubjectResults.length,
-        averageIncorrectScore: averageResults.reduce((acc, subjectResult) => acc + subjectResult.incorrectMarks, 0) / averageSubjectResults.length,
+        averageCorrectScore: averageResults.reduce((acc, subjectResult) => acc + subjectResult.correctMarks, 0) / averageResults.length,
+        averageNotSelectedScore: averageResults.reduce((acc, subjectResult) => acc + subjectResult.notSelectedMarks, 0) / averageResults.length,
+        averageIncorrectScore: averageResults.reduce((acc, subjectResult) => acc + subjectResult.incorrectMarks, 0) / averageResults.length,
     };
 
-
+    let averageCorrect = 0;
+    let averageIncorrect = 0;
+    let averageNotSelected = 0;
+    averageResults.map((result)=>{
+        averageCorrect+=result.marks.reduce((acc, data) => acc + data.correctNumber, 0);
+        averageIncorrect+=result.marks.reduce((acc, data) => acc + data.incorrectNumber, 0);
+        averageNotSelected+=result.marks.reduce((acc, data) => acc + data.notSelectedNumber, 0);
+    });
 
     const data = [
         { id: 0, value: overallAverageResult.averageCorrectScore, label: 'Correct Marks' },
@@ -131,9 +119,9 @@ export default function OverallResult() {
                 />
                 <p style={{fontSize:'20px'}}>Total Question : {totalQuestion}</p>
                 <div className='total-question'>                
-                    <p style={{fontSize:'20px'}}>Correct Questions : {totalCorrectNumber}</p>
-                    <p style={{fontSize:'20px'}}>Incorrect Questions : {totalIncorrectNumber}</p>
-                    <p style={{fontSize:'20px'}}>Not Attempted Questions : {totalNotSelectedNumber}</p>
+                    <p style={{fontSize:'20px'}}>Correct Questions : {averageCorrect}</p>
+                    <p style={{fontSize:'20px'}}>Incorrect Questions : {averageIncorrect}</p>
+                    <p style={{fontSize:'20px'}}>Not Attempted Questions : {averageNotSelected}</p>
                 </div>
                 
             </div>
@@ -143,11 +131,11 @@ export default function OverallResult() {
                     <div className='subject-score'>
                          <h2>{subjectData.subject}</h2>
                          
-                        <p>Average Score: {subjectData.averageCorrectScore}/{totalMarks.subjectWiseMarks[index]["marks"]}</p>
+                        <p>Average Score: {subjectData.correctScore}/{totalMarks.subjectWiseMarks[index]["marks"]}</p>
                        
-                        <div style={{fontSize:'20px'}}>Questions not Attempted : {subjectData.averageNotSelectedNumber}</div>
-                        <div style={{fontSize:'20px'}}>Questions Correct : {subjectData.averageCorrectNumber}</div>
-                        <div style={{fontSize:'20px'}}>Questions Incorrect : {subjectData.averageIncorrectNumber}</div>
+                        <div style={{fontSize:'20px'}}>Questions not Attempted : {subjectData.notSelectedNumber}</div>
+                        <div style={{fontSize:'20px'}}>Questions Correct : {subjectData.correctNumber}</div>
+                        <div style={{fontSize:'20px'}}>Questions Incorrect : {subjectData.incorrectNumber}</div>
                         
                     </div>
                     <PieChart
@@ -155,9 +143,9 @@ export default function OverallResult() {
                         series={[
                             {
                                 data: [
-                                    { id: 0, value: subjectData.averageCorrectScore, label: 'Correct Marks' },
-                                    { id: 1, value: subjectData.averageNotSelectedScore, label: 'Not Attempted Marks' },
-                                    { id: 2, value: subjectData.averageIncorrectScore, label: 'Incorrect Marks' },
+                                    { id: 0, value: subjectData.correctScore, label: 'Correct Marks' },
+                                    { id: 1, value: subjectData.notSelectedScore, label: 'Not Attempted Marks' },
+                                    { id: 2, value: subjectData.incorrectScore, label: 'Incorrect Marks' },
                                 ],
                                 highlightScope: { faded: 'global', highlighted: 'item' },
                                 faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
