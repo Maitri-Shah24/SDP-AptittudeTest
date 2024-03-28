@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../Images/skillassess.jpg'
 
 export default function ProfessorNavbar() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function ProfessorNavbar() {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark nav-bg-color sticky-top">
         <div className="container-fluid">
-          <div className="navbar-brand ms-4" >Navbar</div>
+          <div className="navbar-brand ms-4" ><img src={logo} alt='logo' style={{ width: 'auto', height: '50px' }}  /></div>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

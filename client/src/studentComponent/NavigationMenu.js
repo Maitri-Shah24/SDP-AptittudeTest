@@ -40,7 +40,7 @@ const NavigationMenu = ({ onItemClick }) => {
 
   return (
     <div
-      className={open ? "side-container" : "side-container side-container-NX"} >
+      className={open ? "side-container" : "side-container side-container-NX"}>
       <div className="nav-upper">
         <div className="nav-heading">
           <button

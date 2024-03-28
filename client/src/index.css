@@ -584,6 +584,12 @@ background-clip: text;
  /* Ensure the navbar stays above other content */
 }
 
+.logo-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
 
 .profile-pic{
   display: inline-block;
@@ -638,7 +644,7 @@ background-clip: text;
 
 
 /* =====================sideNav================= */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+/* */
 
 
 .side-container{
@@ -646,15 +652,17 @@ background-clip: text;
     position: sticky;
     color: rgba(0, 0, 0, 0.764);
     transition: 0.4s;
-    /* overflow-y: scroll; */
     height: 100vh;
-    z-index: 10;
-    top: 0;
+    z-index: 0;
     overflow: hidden;
+    padding-top: 80px;
+    top: 0;
+    left: 0;
+   
 }
 
 .side-container-NX {
-    width: 100px;
+  width: 100px;
 }
 
 .name {
@@ -686,7 +694,6 @@ background-clip: text;
   
     position: absolute;
     right: 25px;
-    top: 0;
     background: none;
     border: none;
     cursor:pointer ;
