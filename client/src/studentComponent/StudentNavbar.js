@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 import logo from '../Images/skillassess.jpg'
 
 export default function StudentNavbar() {
@@ -25,13 +25,13 @@ export default function StudentNavbar() {
           <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0 ">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="/studenthome">Home</a>
+                <NavLink className="nav-link" activeClassName="active" aria-current="page" to="/studenthome">Home</NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/studentdashboard">Dashboard</a>
+                <NavLink className="nav-link" activeClassName="active" to="/studentdashboard">Dashboard</NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/about">About Us</a>
+                <NavLink className="nav-link" activeClassName="active" to="/about">About Us</NavLink>
               </li>
             </ul>
             <ul className="navbar-nav me-4 mb-2 mb-lg-0 profile-menu">

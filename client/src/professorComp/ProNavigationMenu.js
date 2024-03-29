@@ -4,6 +4,12 @@ import CategoryIcon from '@mui/icons-material/Category';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 const ProNavigationMenu = ({ onItemClick }) => {
+
+  const [activeItem, setActiveItem] = useState(() => {
+    const storedItem = localStorage.getItem("activeItem");
+    return storedItem ? JSON.parse(storedItem) : { text: "Test List" };
+  });
+
   const [open, setOpen] = useState(true);
   
   const menuItems = [
@@ -30,6 +36,12 @@ const ProNavigationMenu = ({ onItemClick }) => {
     },
   ];
 
+  const handleItemClick = (item) => {
+    onItemClick(item);
+    setActiveItem(item);
+    localStorage.setItem("activeItem", JSON.stringify(item));
+  };
+
   return (
     <div
       className={open ? "side-container" : "side-container side-container-NX"} >
@@ -48,7 +60,10 @@ const ProNavigationMenu = ({ onItemClick }) => {
         </div>
         <div className="nav-menu">
             {menuItems.map(({text, icon,path}) => 
-                <div className={open ? "menu-item" : "menu-item menu-item-NX"} onClick={()=> onItemClick({text})}>
+                <div key={text}
+                className={open ? "menu-item" : "menu-item menu-item-NX"}
+                onClick={() => handleItemClick({ text, path })}
+                style={{ color: activeItem && activeItem.text === text ? "rgb(27, 210, 177)" : "" }}>
                     <p>{icon}</p>
                     <p>{open && <p>{text}</p>}</p>
                     <p>{!open && <div className="tooltip">{text}</div>}</p>

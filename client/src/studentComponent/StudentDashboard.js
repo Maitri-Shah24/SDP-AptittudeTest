@@ -12,16 +12,17 @@ import Result from './Result';
 
 export default function StudentDashboard() {
 
-  const [currentComponent, setCurrentComponent] = useState('Test List');
-  console.log(currentComponent)
+  const [currentComponent, setCurrentComponent] = useState(() => {
+    const storedItem = localStorage.getItem("activeItem");
+    return storedItem ? JSON.parse(storedItem) : { text: "Test List" };
+  });
+
   const renderCurrentComponent = () => {
     
     switch (currentComponent.text) {
       case 'Test List':
-        console.log(currentComponent)
         return <StudentTestList />;
       case 'Sample Questions':
-        console.log(currentComponent)
         return <SampleQues/>;
       case 'History':
         return <History/>;

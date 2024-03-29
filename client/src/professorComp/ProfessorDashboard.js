@@ -9,8 +9,10 @@ import ResultTest from './ResultTest'
 
 
 export default function Dashboard() {
-  const [currentComponent, setCurrentComponent] = useState('Test List');
-  console.log(currentComponent)
+  const [currentComponent, setCurrentComponent] = useState(() => {
+    const storedItem = localStorage.getItem("activeItem");
+    return storedItem ? JSON.parse(storedItem) : { text: "Test List" };
+  });
   const renderCurrentComponent = () => {
     
     switch (currentComponent.text) {

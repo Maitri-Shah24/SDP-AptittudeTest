@@ -626,6 +626,7 @@ background-clip: text;
   gap:40px;
 }
 
+
 .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.764);
   font-size: 1.3rem;
@@ -634,8 +635,8 @@ background-clip: text;
   color: rgb(27, 210, 177);
 }
 
-.nav-link:active{
-  color: rgb(27, 210, 177); 
+.active {
+  color: rgb(27, 210, 177) !important;
 }
 
 .navbar-toggler-icon{

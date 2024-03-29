@@ -1,11 +1,13 @@
 import React from 'react';
 import StudentNavbar from '../studentComponent/StudentNavbar';
 import aboutus from '../Images/aboutus.jpg'
+import ProfessorNavbar from '../professorComp/ProfessorNavbar';
 
 function AboutPage() {
+  const role = sessionStorage.getItem('userRole');
   return (
     <>
-      <StudentNavbar />
+     {role==='student'?<StudentNavbar />:<ProfessorNavbar/>}
       <img src={aboutus} style={{width:'100%', height:'400px',opacity:'0.5'}}/>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column',marginTop:"-130px" }}>
         <h1 style={{fontWeight:"bold"}}>Aptitude Test Software</h1>
