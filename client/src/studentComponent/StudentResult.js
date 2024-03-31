@@ -8,6 +8,7 @@ export default function StudentResult() {
     const location = useLocation();
     const id = location.state ? location.state.testId : null;
     const { user } = useSession();
+    const userId = typeof user === 'object' ? user.id : user;
     const [result, setResult] = useState(null);
     const [totalMarks, setTotalMarks] = useState(null);
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function StudentResult() {
         const fetchMarks = async () => {
             try {
                 console.log(user)
-                const response = await axios.get(`http://localhost:8000/test/${id}/${user}/result`);
+                const response = await axios.get(`http://localhost:8000/test/${id}/${userId}/result`);
                 setResult(response.data.studentMarks);
                 setTotalMarks(response.data.totalMarks);
 
@@ -41,7 +42,7 @@ export default function StudentResult() {
         if (id) { // Only fetch marks if id is available
             fetchMarks();
         }
-    }, [id, user]);
+    }, [id, userId]);
 
     if (!result || !totalMarks) {
         return <div>Loading...</div>;

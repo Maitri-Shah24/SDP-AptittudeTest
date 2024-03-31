@@ -16,11 +16,11 @@ export default function Test() {
     var notSelectedMarks = 0;
     var incorrectMarks = 0;
     const { user } = useSession();
+    const userId = typeof user === 'object' ? user.id : user;
     const [time, setTime] = useState(() => {
       const storedTime = localStorage.getItem(`testTime_${id}`);
       return storedTime ? parseInt(storedTime, 10) : 0;
   });
-  const userId = user ? user : null;
   const [testName,setTestName]=useState("");
 
   const [tabSwitchCount, setTabSwitchCount] = useState(0);

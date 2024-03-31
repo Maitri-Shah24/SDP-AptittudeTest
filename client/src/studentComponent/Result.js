@@ -6,13 +6,15 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function Result() {
     const [test,setTest] = useState([]);
     const { user } = useSession();
+    const userId = typeof user === 'object' ? user.id : user;
     const navigate = useNavigate();
     console.log(test);
+    console.log("result")
 
     useEffect(()=>{
         const fetchTest=async()=>{
             try{
-                const response = await axios.get(`http://localhost:8000/result/${user}`);
+                const response = await axios.get(`http://localhost:8000/result/${userId}`);
                 setTest(response.data.tests);
             }
             catch(error){
@@ -20,7 +22,7 @@ export default function Result() {
             }
         }
         fetchTest();
-    },[])
+    },[user])
   return (
     <div className='TestList-container'>
       <div className="test-card-container">

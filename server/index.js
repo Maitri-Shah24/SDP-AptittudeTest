@@ -396,7 +396,8 @@ app.get('/result/:user',async(req,res)=>{
 
 app.get("/test/:user/historyresult",async(req,res)=>{
   try{
-    const studentMarks = await MarksModel.find({student:req.params.user});
+    console.log(req.params.user)
+    const studentMarks = await MarksModel.find({student : req.params.user});
     console.log(studentMarks);
     const test = studentMarks.map(result=>result.test);
 
