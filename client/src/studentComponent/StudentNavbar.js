@@ -1,50 +1,159 @@
-import React from 'react';
-import {NavLink, useNavigate} from 'react-router-dom';
-import logo from '../Images/skillassess.jpg'
+import React, { useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import logo from "../Images/skillassess.jpg";
 
 export default function StudentNavbar() {
   const navigate = useNavigate();
 
-  const handleProfileClick=()=>{
-    navigate("/profile");
-  }
-  const handleLogout=()=>{
-    localStorage.removeItem('user');
-    navigate("/");
+  // Load profile image URL from localStorage on component mount
+  useEffect(() => {
+    const storedProfileImage = localStorage.getItem("profileImage");
+    if (storedProfileImage) {
+      const profileImg = document.querySelector(".profile-pic img");
+      if (profileImg) {
+        profileImg.src = storedProfileImage;
+      }
+    }
+  }, []);
 
+  const handleProfileClick = () => {
+    navigate("/profile");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/");
+  };
+
+  function handleProfileImage(event) {
+    const file = event.target.files[0]; // Get the first selected file
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const imageUrl = event.target.result;
+        const profileImg = document.querySelector(".profile-pic img");
+        if (profileImg) {
+          // Update the profile picture with the selected image
+          profileImg.src = imageUrl;
+          // Save the selected image URL to localStorage
+          localStorage.setItem("profileImage", imageUrl);
+        } else {
+          console.error("Profile image element not found.");
+        }
+      };
+      reader.readAsDataURL(file); // Read the selected file as a data URL
+    }
   }
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark nav-bg-color sticky-top">
         <div className="container-fluid">
-          <div className="navbar-brand ms-4 " ><img src={logo} alt='logo' style={{ width: 'auto', height: '50px' }}  /></div>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <div className="navbar-brand ms-4 ">
+            <img
+              src={logo}
+              alt="logo"
+              style={{ width: "auto", height: "50px" }}
+            />
+          </div>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
-          
-          <div className="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+          <div
+            className="collapse navbar-collapse justify-content-center"
+            id="navbarSupportedContent"
+          >
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0 ">
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="active" aria-current="page" to="/studenthome">Home</NavLink>
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  aria-current="page"
+                  to="/studenthome"
+                >
+                  Home
+                </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="active" to="/studentdashboard">Dashboard</NavLink>
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/studentdashboard"
+                >
+                  Dashboard
+                </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" activeClassName="active" to="/about">About Us</NavLink>
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/about"
+                >
+                  About Us
+                </NavLink>
               </li>
             </ul>
             <ul className="navbar-nav me-4 mb-2 mb-lg-0 profile-menu">
-              <li className="nav-item dropdown" >
-                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   <div className="profile-pic">
-                    <img src="https://source.unsplash.com/250x250?girl" alt="Profile Picture" />
+                    <img
+                      src="https://i.pinimg.com/564x/c2/65/20/c26520f649ac37dbda7d7bd40f3e040e.jpg"
+                      alt="Profile Picture"
+                    />
                   </div>
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><div className="dropdown-item" onClick={handleProfileClick}><i className="fas fa-sliders-h fa-fw"></i> My Profile</div></li>
-                  <li><hr className="dropdown-divider" /></li>
-                  <li><div className="dropdown-item" onClick={handleLogout}><i className="fas fa-sign-out-alt fa-fw"></i> Log Out</div></li>
+                  <li>
+                    <div className="dropdown-item">
+                      <label
+                        htmlFor="profile-image-upload"
+                        className="d-block cursor-pointer"
+                      >
+                        <i className="fas fa-user-plus fa-fw me-2"></i> Add
+                        Profile Image
+                      </label>
+                      <input
+                        id="profile-image-upload"
+                        type="file"
+                        //accept="image/*"
+                        style={{ display: "none" }}
+                        onChange={handleProfileImage}
+                      />
+                    </div>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                  </li>
+                  <li>
+                    <div className="dropdown-item" onClick={handleProfileClick}>
+                      <i className="fas fa-sliders-h fa-fw"></i> My Profile
+                    </div>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li>
+                    <div className="dropdown-item" onClick={handleLogout}>
+                      <i className="fas fa-sign-out-alt fa-fw"></i> Log Out
+                    </div>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -52,5 +161,5 @@ export default function StudentNavbar() {
         </div>
       </nav>
     </>
-  )
+  );
 }
