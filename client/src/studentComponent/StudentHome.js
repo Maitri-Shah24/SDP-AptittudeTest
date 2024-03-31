@@ -5,9 +5,6 @@ import StudentNavbar from './StudentNavbar'
 import { useSession } from '../components/SessionContext'
 
 export default function StudentHome() {
-  const {user} = useSession();
-   // Add a null check for the user object
-   const userId = user ? user.id : null;
   return (
     <>
     <StudentNavbar/>
@@ -21,7 +18,6 @@ export default function StudentHome() {
         <img src={home1} alt='image'/>
       </div>
     </div>
-    {userId}
     </>
   )
 }
