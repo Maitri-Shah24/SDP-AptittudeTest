@@ -7,7 +7,10 @@ export default function StudentNavbar() {
 
   // Load profile image URL from localStorage on component mount
   useEffect(() => {
-    const storedProfileImage = localStorage.getItem("profileImage");
+    const user = localStorage.getItem("user"); // Get the user identity from localStorage
+    const storedProfileImage = localStorage.getItem(`profileImage_${user}`);
+    console.log("Current user:", user);
+    console.log("Stored profile image:", storedProfileImage);
     if (storedProfileImage) {
       const profileImg = document.querySelector(".profile-pic img");
       if (profileImg) {
@@ -26,22 +29,22 @@ export default function StudentNavbar() {
   };
 
   function handleProfileImage(event) {
-    const file = event.target.files[0]; // Get the first selected file
+    const user = localStorage.getItem("user"); // Get the user identity
+    const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = function (event) {
         const imageUrl = event.target.result;
         const profileImg = document.querySelector(".profile-pic img");
         if (profileImg) {
-          // Update the profile picture with the selected image
           profileImg.src = imageUrl;
-          // Save the selected image URL to localStorage
-          localStorage.setItem("profileImage", imageUrl);
+          localStorage.setItem(`profileImage_${user}`, imageUrl); // Store profile image with user identity
+          console.log("Profile image set for user:", user);
         } else {
           console.error("Profile image element not found.");
         }
       };
-      reader.readAsDataURL(file); // Read the selected file as a data URL
+      reader.readAsDataURL(file);
     }
   }
 

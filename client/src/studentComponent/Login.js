@@ -35,6 +35,7 @@ export default function Login(props) {
             });
             setUser({ id: studentId });
             sessionStorage.setItem('user', studentId)
+            localStorage.setItem("user", studentId);
             history("/studenthome");
           } else if (res.data === "notexist") {
             alert("User have not sign up");
