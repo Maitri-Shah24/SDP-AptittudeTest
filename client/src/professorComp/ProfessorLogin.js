@@ -33,6 +33,7 @@ export default function ProfessorLogin(props) {
             });
             setUser({ id: professorId });
             sessionStorage.setItem('user', professorId);
+            localStorage.setItem("user", professorId);
             history("/professorhome");
           } else if (res.data === "notexist") {
             alert("User have not sign up");
