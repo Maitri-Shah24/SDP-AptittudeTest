@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import StudentTestList from './StudentTestList'
 import StudentNavbar from './StudentNavbar'
 import SampleQues from './SampleQues'
-import axios from 'axios';
-import moment from 'moment-timezone';
-import { resolveDateFormat } from '@mui/x-date-pickers/internals/utils/date-utils';
 import NavigationMenu from './NavigationMenu';
-import zIndex from '@mui/material/styles/zIndex';
 import History from './History';
 import Result from './Result';
 
