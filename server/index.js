@@ -13,7 +13,9 @@ const MarksModel = require('./models/Marks');
 
 const app = express()
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin:["http://localhost:3000","https://aptittudetest.onrender.com/"]
+}))
 const port = 8000
 
 mongoose.connect("mongodb://127.0.0.1:27017/aptitude-test")
