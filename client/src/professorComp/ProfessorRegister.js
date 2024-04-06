@@ -59,7 +59,7 @@ export default function ProfessorRegister() {
         .then((res) => {
           if (res.data === "exist") {
             alert("User already exists");
-          } else if (res.data === "notexist") {
+          } else {
             history("/professorlogin");
           }
         })

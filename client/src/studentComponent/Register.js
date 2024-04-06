@@ -44,6 +44,7 @@ export default function Register() {
       console.error("Passwords do not match");
       return;
     }
+    console.log("l")
 
     try {
       await axios
@@ -58,7 +59,7 @@ export default function Register() {
         .then((res) => {
           if (res.data === "exist") {
             alert("User already exists");
-          } else if (res.data === "notexist") {
+          } else {
             history("/login");
           }
         })

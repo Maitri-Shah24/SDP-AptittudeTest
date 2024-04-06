@@ -19,7 +19,8 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }))
-const port = process.env.PORT || 8000;
+
+const port = 8000 ;
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -30,13 +31,6 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false } 
 }));
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://aptittudetest.onrender.com");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
 
 app.post("/login", async (req, res) => {
   const { studentId, password } = req.body;
@@ -108,14 +102,13 @@ app.put('/profile/:userId', async (req, res) => {
 });
 
 app.post('/register',(req,res)=>{
-
+  console.log("k");
   StudentModel.findOne({ email: req.body.email })
   .then(existingStudent => {
     if (existingStudent) {
       res.json("exist")
       return;
     } else {
-      res.json("notexist")
       StudentModel.create(req.body)
         .then(newStudent => res.json(newStudent))
         .catch(err => res.status(500).json(err));
@@ -145,7 +138,6 @@ app.post('/pregister',(req,res)=>{
       res.json("exist");
       return;
     } else {
-      res.json("notexist")
       ProfessorModel.create(req.body)
         .then(newprofessor => res.json(newprofessor))
         .catch(err => res.status(500).json(err));
