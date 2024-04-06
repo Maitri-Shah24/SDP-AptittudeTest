@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useSession } from '../components/SessionContext';
 import axios from 'axios';
 import { PieChart } from '@mui/x-charts/PieChart';
+import { baseurl } from '../services/Url';
 
 export default function OverallResult() {
     const {id} = useParams();
@@ -14,7 +15,7 @@ export default function OverallResult() {
     useEffect(() => {
         const fetchAverageResults = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/test/${id}/average-results`);
+                const response = await axios.get(`${baseurl}/test/${id}/average-results`);
                 setAverageResults(response.data.studentMarks);
                 setTotalMarks(response.data.totalMarks);
                 const updatedTotalQuestion = response.data.studentMarks[0].marks.reduce((acc, data) => acc + data.correctNumber + data.incorrectNumber + data.notSelectedNumber, 0);

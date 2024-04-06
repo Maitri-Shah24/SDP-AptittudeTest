@@ -4,6 +4,7 @@ import { Link, useNavigate} from 'react-router-dom'
 import moment from 'moment-timezone';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { baseurl } from '../services/Url';
 
 export default function ResultTest(){
   
@@ -17,7 +18,7 @@ export default function ResultTest(){
   useEffect(() => {
     const fetchTest = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/tests');
+        const response = await axios.get(`${baseurl}/tests`);
         const tests = response.data;
   
         let pastTestsArray = [];

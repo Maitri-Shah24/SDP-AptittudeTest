@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { baseurl } from '../services/Url';
 
 export default function TestDetails (){
   const { id } = useParams();
@@ -11,7 +12,7 @@ export default function TestDetails (){
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/test/${id}/questions`);
+        const response = await axios.get(`${baseurl}/test/${id}/questions`);
         setQuestions(response.data);
       } catch (error) {
         console.error('Error fetching questions:', error);
@@ -31,7 +32,7 @@ export default function TestDetails (){
     const testId = id;
    
       try {
-        const response = await axios.get(`http://localhost:8000/test/${testId}/${questionId}/marks`);
+        const response = await axios.get(`${baseurl}/test/${testId}/${questionId}/marks`);
 
         let updatedSubjectWiseMarks =[...response.data.subjectWiseMarks];
         const subjectIndex = updatedSubjectWiseMarks.findIndex(subjectMark => subjectMark.subject === response.data.question.courseID);
@@ -39,12 +40,12 @@ export default function TestDetails (){
         response.data.totalMarks -= parseInt(response.data.question.weightage);
         updatedSubjectWiseMarks[subjectIndex].marks-=parseInt(response.data.question.weightage);         
 
-      await axios.put(`http://localhost:8000/test/${testId}/update`, {
+      await axios.put(`${baseurl}/test/${testId}/update`, {
           subjectWiseMarks: updatedSubjectWiseMarks,
           totalMarks: response.data.totalMarks
       });
 
-      await axios.delete(`http://localhost:8000/questions/${questionId}/delete`);
+      await axios.delete(`${baseurl}/questions/${questionId}/delete`);
         setQuestions(questions.filter(question => question._id !== questionId));
       } catch (error) {
         console.error('Error deleting question:', error);

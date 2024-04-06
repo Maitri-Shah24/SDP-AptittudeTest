@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSession } from '../components/SessionContext';
 import { Link, useNavigate } from 'react-router-dom';
+import { baseurl } from '../services/Url';
 
 export default function Result() {
     const [test,setTest] = useState([]);
@@ -14,7 +15,7 @@ export default function Result() {
     useEffect(()=>{
         const fetchTest=async()=>{
             try{
-                const response = await axios.get(`http://localhost:8000/result/${userId}`);
+                const response = await axios.get(`${baseurl}/result/${userId}`);
                 setTest(response.data.tests);
             }
             catch(error){

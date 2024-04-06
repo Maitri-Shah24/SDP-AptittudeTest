@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import VideoBackGround from "../components/VideoBackGround";
 import axios from "axios";
+import { baseurl } from "../services/Url";
 
 export default function Register() {
   const [firstName, setFirstName] = useState("");
@@ -46,7 +47,7 @@ export default function Register() {
 
     try {
       await axios
-        .post("http://localhost:8000/register", {
+        .post(`${baseurl}/register`, {
           firstName,
           lastName,
           studentId,

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { baseurl } from "../services/Url";
 
 export default function QuestionAnswer() {
 
@@ -16,9 +17,9 @@ export default function QuestionAnswer() {
     useEffect(()=>{
         const fetchQuestions = async()=>{
             try{
-                const response = await axios.get(`http://localhost:8000/test/${id}/questions`);
+                const response = await axios.get(`${baseurl}/test/${id}/questions`);
                 setQuestions(response.data);
-                const response2 = await axios.get(`http://localhost:8000/test/${id}/duration`);
+                const response2 = await axios.get(`${baseurl}/test/${id}/duration`);
                 setTestName(response2.data.testName);
 
             }

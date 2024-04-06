@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { baseurl } from '../services/Url';
 
 export default function AddQue() {
 
@@ -48,7 +49,7 @@ export default function AddQue() {
         console.log('Form submitted:', formData);
 
         try {
-          await axios.post(`http://localhost:8000/test/${testId}/addQuestion`, formData);
+          await axios.post(`${baseurl}/test/${testId}/addQuestion`, formData);
           setFormData({
             courseID: '',
             question: '',
@@ -60,7 +61,7 @@ export default function AddQue() {
             answer: '',
           });
           
-          const response = await axios.get(`http://localhost:8000/test/${testId}/marks`);
+          const response = await axios.get(`${baseurl}/test/${testId}/marks`);
           console.log(response.data);
           let updatedSubjectWiseMarks = response.data.subjectWiseMarks? [...response.data.subjectWiseMarks]:[];
           console.log(updatedSubjectWiseMarks);
@@ -80,7 +81,7 @@ export default function AddQue() {
             response.data.totalMarks += parseInt(formData.weightage);
         }
 
-        await axios.put(`http://localhost:8000/test/${testId}/update`, {
+        await axios.put(`${baseurl}/test/${testId}/update`, {
             subjectWiseMarks: updatedSubjectWiseMarks,
             totalMarks: response.data.totalMarks
         });

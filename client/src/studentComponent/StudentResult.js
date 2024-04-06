@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useSession } from '../components/SessionContext';
 import axios from 'axios';
 import { PieChart } from '@mui/x-charts/PieChart';
+import { baseurl } from '../services/Url';
 
 export default function StudentResult() {
     const location = useLocation();
@@ -21,7 +22,7 @@ export default function StudentResult() {
         const fetchMarks = async () => {
             try {
                 console.log(user)
-                const response = await axios.get(`http://localhost:8000/test/${id}/${userId}/result`);
+                const response = await axios.get(`${baseurl}/test/${id}/${userId}/result`);
                 setResult(response.data.studentMarks);
                 setTotalMarks(response.data.totalMarks);
 

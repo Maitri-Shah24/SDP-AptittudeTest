@@ -6,6 +6,7 @@ import moment from 'moment-timezone';
 import Box from '@mui/material/Box';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { baseurl } from '../services/Url';
 
 export default function StudentTestList(){
 
@@ -20,7 +21,7 @@ export default function StudentTestList(){
   useEffect(() => {
     const fetchTest = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/tests');
+        const response = await axios.get(`${baseurl}/tests`);
         const tests = response.data;
   
         let pastTestsArray = [];

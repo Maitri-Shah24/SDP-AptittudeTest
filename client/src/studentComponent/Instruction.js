@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import { baseurl } from '../services/Url';
 
 export default function Instruction() {
 
@@ -14,9 +15,9 @@ export default function Instruction() {
   useEffect(() => {
     const fetchDetails = async () => {
         try {
-          const response = await axios.get(`http://localhost:8000/test/${id}/questions`);
+          const response = await axios.get(`${baseurl}/test/${id}/questions`);
           setQueNumber(response.data.length);
-          const response2 = await axios.get(`http://localhost:8000/test/${id}/duration`);
+          const response2 = await axios.get(`${baseurl}/test/${id}/duration`);
           setDuration(response2.data.duration)
         }catch(error){
         }

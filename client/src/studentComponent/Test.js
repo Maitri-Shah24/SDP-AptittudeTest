@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSession } from '../components/SessionContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { baseurl } from '../services/Url';
 
 export default function Test() {
 
@@ -55,9 +56,9 @@ export default function Test() {
   }
     const fetchQuestions = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/test/${id}/questions`);
+            const response = await axios.get(`${baseurl}/test/${id}/questions`);
             setQuestions(response.data);
-            const response2 = await axios.get(`http://localhost:8000/test/${id}/duration`);
+            const response2 = await axios.get(`${baseurl}/test/${id}/duration`);
             const timeMillisecond = parseInt(response2.data.duration * 60 * 1000);
             setTestName(response2.data.testName);
             setTime(prevTime => {
@@ -119,7 +120,7 @@ export default function Test() {
   }
   const handleSubmit= async()=>{
 
-        const response = await axios.get(`http://localhost:8000/test/${id}/getSubjects`)
+        const response = await axios.get(`${baseurl}/test/${id}/getSubjects`)
 
         response.data.map((sub)=>{
             marks.push({
@@ -162,7 +163,7 @@ export default function Test() {
         )
         console.log(user)
         // const userId = user ? user.id : null;
-        await axios.post(`http://localhost:8000/test/${id}/studentMarks/${userId}`,{subjectMarks: marks, correctMarks : correctMarks, notSelectedMarks: notSelectedMarks, incorrectMarks: incorrectMarks});
+        await axios.post(`${baseurl}/test/${id}/studentMarks/${userId}`,{subjectMarks: marks, correctMarks : correctMarks, notSelectedMarks: notSelectedMarks, incorrectMarks: incorrectMarks});
         console.log("submited")
         navigate("/result",{ state: { testId: id } });
         

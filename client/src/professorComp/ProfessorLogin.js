@@ -4,6 +4,7 @@ import VideoBackGround from '../components/VideoBackGround.js';
 import axios from "axios";
 import { toast} from "react-toastify";
 import { useSession } from "../components/SessionContext";
+import { baseurl } from '../services/Url.js';
 
 export default function ProfessorLogin(props) {
     const [professorId, setProfessorId] = useState('');
@@ -17,7 +18,7 @@ export default function ProfessorLogin(props) {
 
     try {
       await axios
-        .post("http://localhost:8000/plogin", {
+        .post(`${baseurl}/plogin`, {
           professorId,
           password,
         })

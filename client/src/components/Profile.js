@@ -3,6 +3,7 @@ import { useSession } from "./SessionContext";
 import axios from "axios";
 import StudentNavbar from "../studentComponent/StudentNavbar";
 import ProfessorNavbar from "../professorComp/ProfessorNavbar";
+import { baseurl } from "../services/Url";
 
 export function StudentProfile() {
   const [userInfo, setUserInfo] = useState(null);
@@ -20,7 +21,7 @@ export function StudentProfile() {
 
       try {
         const response = await axios.get(
-          `http://localhost:8000/profile/${user}?role=${role}`
+          `${baseurl}/profile/${user}?role=${role}`
         );
         if (response.status === 200) {
           setUserInfo(response.data);
@@ -42,7 +43,7 @@ export function StudentProfile() {
   const handleSave = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/profile/${user}?role=${role}`,
+        `${baseurl}/profile/${user}?role=${role}`,
         userInfo
       );
       if (response.status === 200) {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import VideoBackGround from '../components/VideoBackGround' 
 import axios from "axios";
+import { baseurl } from '../services/Url';
 
 export default function ProfessorRegister() {
 
@@ -47,7 +48,7 @@ export default function ProfessorRegister() {
 
     try {
       await axios
-        .post("http://localhost:8000/pregister", {
+        .post(`${baseurl}/pregister`, {
           firstName,
           lastName,
           professorId,

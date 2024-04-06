@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import { Link, useHistory, useNavigate } from 'react-router-dom';
+import { baseurl } from '../services/Url';
 
 export default function AddTest() {
 
@@ -29,7 +30,7 @@ export default function AddTest() {
     try {
       
       const response= await axios
-        .post("http://localhost:8000/test", {
+        .post(`${baseurl}/test`, {
           testName: formData.testName,
           duration: formData.duration,
           date: formData.date,
@@ -37,7 +38,7 @@ export default function AddTest() {
           endTime: formData.endTime,
         })
 
-        await axios.post("http://localhost:8000/totalMarkTestID",{
+        await axios.post(`${baseurl}/totalMarkTestID`,{
           test:response.data._id,
         })
         history(`/addQue/${response.data._id}`);

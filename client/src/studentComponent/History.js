@@ -3,6 +3,7 @@ import { useSession } from '../components/SessionContext';
 import axios from 'axios';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { axisClasses } from '@mui/x-charts';
+import { baseurl } from '../services/Url';
 
 export default function History() {
     const { user } = useSession();
@@ -15,7 +16,7 @@ export default function History() {
     useEffect(() => {
         const fetchMarks = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/test/${userId}/historyresult`);
+                const response = await axios.get(`${baseurl}/test/${userId}/historyresult`);
                 setResult(response.data.studentMarks);
                 console.log("Set result")
                 setTestName(response.data.testName);
