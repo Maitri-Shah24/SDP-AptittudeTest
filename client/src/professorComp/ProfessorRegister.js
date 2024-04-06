@@ -116,9 +116,8 @@ export default function ProfessorRegister() {
               onChange={handleConfirmPasswordChange}/>
         <span>Confirm password</span>
     </label>
-    <Link to="/professorlogin">
+   
     <button className="submit" onClick={handleSubmit}>Submit</button>
-    </Link>
     <p className="signin">Already have an acount ? <Link to="/professorlogin" className='link'>Login</Link> </p>
 </form>
 </div>
