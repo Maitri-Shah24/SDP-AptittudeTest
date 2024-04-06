@@ -16,9 +16,11 @@ app.use(express.json())
 app.use(cors({
   origin:["http://localhost:3000","https://aptittudetest.onrender.com/"]
 }))
-const port = 8000
+const port = process.env.PORT || 8000;
 
-mongoose.connect("mongodb://127.0.0.1:27017/aptitude-test")
+require('dotenv').config();
+
+mongoose.connect(process.env.MONGODB_URI);
 
 app.use(cookieParser());
 app.use(session({
