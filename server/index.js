@@ -10,6 +10,7 @@ const TestModel = require('./models/Test');
 const QuestionModel = require('./models/Question');
 const TotalMarkModel = require('./models/TotalMark');
 const MarksModel = require('./models/Marks');
+require('dotenv').config();
 
 const app = express()
 app.use(express.json())
@@ -20,8 +21,6 @@ app.use(cors({
 }))
 const port = process.env.PORT || 8000;
 
-require('dotenv').config();
-
 mongoose.connect(process.env.MONGODB_URI);
 
 app.use(cookieParser());
@@ -31,6 +30,13 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false } 
 }));
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://aptittudetest.onrender.com");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 app.post("/login", async (req, res) => {
   const { studentId, password } = req.body;
