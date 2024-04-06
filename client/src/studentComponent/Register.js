@@ -47,7 +47,7 @@ export default function Register() {
 
     try {
       await axios
-        .post(`${baseurl}/register`, {
+        .post(`${baseurl}/register` , {
           firstName,
           lastName,
           studentId,
