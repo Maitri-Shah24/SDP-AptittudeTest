@@ -30,8 +30,7 @@ function App() {
 
   const storedUser = sessionStorage.getItem('user');
   let initialUser = null;
-  console.log(storedUser);
-
+  
    try{
      initialUser = storedUser ? JSON.parse(storedUser) : null;
      console.log(initialUser);

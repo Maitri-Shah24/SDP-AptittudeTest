@@ -94,7 +94,6 @@ export default function TestList(){
       <TabPanel >
       <div className="test-card-container">
         {currentTests.map(test => (
-          <Link key={test._id} to={`/instruction/${test._id}`} className='test-card'>
           <div key={test._id}>
             <h3>{test.testName}</h3>
             <p>Duration: {test.duration} minutes</p>
@@ -102,7 +101,6 @@ export default function TestList(){
             <p>Start Time: {test.startTime}</p>
             <p>End Time: {test.endTime}</p>
           </div>
-          </Link>
         ))}
       </div>
       </TabPanel>
