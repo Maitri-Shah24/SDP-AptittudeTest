@@ -29,22 +29,16 @@ export default function StudentTestList(){
         let futureTestsArray = [];
   
         tests.forEach(test => {
-          const startTime = moment(test.startTime);
-          const endTime = moment(test.endTime);
-          const date = moment(test.date);
-  
-          if (currentDate > date.format('YYYY-MM-DD')) {
+          const startTime = moment.tz(`${test.date} ${test.startTime}`, timezone);
+          const endTime = moment.tz(`${test.date} ${test.endTime}`, timezone);
+          // const date = moment(test.date, 'YYYY-MM-DD');
+
+          if (currentTime.isAfter(endTime)) {
             pastTestsArray.push(test);
-          } else if (currentDate < date.format('YYYY-MM-DD')) {
-            futureTestsArray.push(test);
+          } else if (currentTime.isBetween(startTime, endTime)) {
+            currentTestsArray.push(test);
           } else {
-            if (currentTime.isAfter(endTime)) {
-              pastTestsArray.push(test);
-            } else if (currentTime.isBefore(startTime)) {
-              futureTestsArray.push(test);
-            } else {
-              currentTestsArray.push(test);
-            }
+            futureTestsArray.push(test);
           }
         });
   

@@ -23,6 +23,15 @@ export default function ProfessorNavbar() {
     navigate("/");
 
   }
+  const handleRemoveProfileImage = () => {
+    const user = localStorage.getItem("user");
+    localStorage.removeItem(`profileImage_${user}`);
+    const profileImg = document.querySelector(".profile-pic img");
+    if (profileImg) {
+      profileImg.src = "https://i.pinimg.com/564x/c2/65/20/c26520f649ac37dbda7d7bd40f3e040e.jpg"; 
+    }
+  }
+
   function handleProfileImage(event) {
     const user = localStorage.getItem("user"); // Get the user identity
     const file = event.target.files[0];
@@ -76,7 +85,7 @@ export default function ProfessorNavbar() {
                         htmlFor="profile-image-upload"
                         className="d-block cursor-pointer"
                       >
-                        <i className="fas fa-user-plus fa-fw me-2"></i> Add
+                        <i className="fas fa-user-plus fa-fw me-2"></i> Set
                         Profile Image
                       </label>
                       <input
@@ -88,6 +97,14 @@ export default function ProfessorNavbar() {
                       />
                     </div>
                     </li>
+                    <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li>
+                    <div className="dropdown-item" onClick={handleRemoveProfileImage}>
+                      <i className="fas fa-user-minus fa-fw me-2"></i> Remove Profile Image
+                    </div>
+                  </li>
                     <li>
                       <hr className="dropdown-divider" />
                     </li>
