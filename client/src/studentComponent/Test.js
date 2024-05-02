@@ -20,7 +20,7 @@ export default function Test() {
     const userId = typeof user === 'object' ? user.id : user;
     const [time, setTime] = useState(() => {
       const storedTime = localStorage.getItem(`testTime_${id}`);
-      return storedTime ? parseInt(storedTime, 10) : 1;
+      return storedTime ? parseInt(storedTime, 10) : 0;
   });
   const [testName,setTestName]=useState("");
 
@@ -66,6 +66,7 @@ export default function Test() {
               const storedTimeInt = storedTime ? parseInt(storedTime, 10) : 0;
               return storedTimeInt > 0 ? storedTimeInt : timeMillisecond;
           });
+          fetchTime();
           if (!localStorage.getItem(`testTime_${id}`)) {
               localStorage.setItem(`testTime_${id}`, timeMillisecond.toString());
           }
@@ -78,22 +79,14 @@ export default function Test() {
 }, [id]);
 
 
-
-  
-  useEffect(() => {
     let intervalId;
-
+    const fetchTime = ()=>{
     const tick = () => {
-      setTime(prevTime => {
-        const newTime = prevTime - 1000;
-        localStorage.setItem(`testTime_${id}`, newTime.toString());
-        if (newTime <= 0) {
-          handleSubmit(); // Auto-submit when time reaches 00:00:00
-          clearInterval(intervalId); // Stop the timer
-          return 0; // Set time to 0
-        }
-        return newTime;
-      });
+        setTime(prevTime => {
+            const newTime = prevTime - 1000;
+            localStorage.setItem(`testTime_${id}`, newTime.toString());
+            return newTime >= 0 ? newTime : 0;
+        });
     };
 
     intervalId = setInterval(tick, 1000);
@@ -101,7 +94,8 @@ export default function Test() {
     return () => {
         clearInterval(intervalId);
     };
-}, []);
+  }
+
 
 
   const getFormattedTime=(milliseconds)=>{
