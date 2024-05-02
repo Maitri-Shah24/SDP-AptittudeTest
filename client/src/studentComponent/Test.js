@@ -81,14 +81,18 @@ export default function Test() {
 
     let intervalId;
     const fetchTime = ()=>{
-    const tick = () => {
+      const tick = () => {
         setTime(prevTime => {
-            const newTime = prevTime - 1000;
-            localStorage.setItem(`testTime_${id}`, newTime.toString());
-            return newTime >= 0 ? newTime : 0;
+          const newTime = prevTime - 1000;
+          localStorage.setItem(`testTime_${id}`, newTime.toString());
+          if (newTime <= 0) {
+            handleSubmit(); // Auto-submit when time reaches 00:00:00
+            clearInterval(intervalId); // Stop the timer
+            return 0; // Set time to 0
+          }
+          return newTime;
         });
-    };
-
+      };
     intervalId = setInterval(tick, 1000);
 
     return () => {
