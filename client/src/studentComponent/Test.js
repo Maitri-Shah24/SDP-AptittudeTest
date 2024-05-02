@@ -45,7 +45,7 @@ export default function Test() {
         }
         if (tabSwitchCount > 2) {
             alert('You have switched tabs multiple times. Your test will be submitted.');
-            navigate("/result");
+            handleSubmit();
         }
 
     }, [tabSwitchCount]);
@@ -84,11 +84,16 @@ export default function Test() {
     let intervalId;
 
     const tick = () => {
-        setTime(prevTime => {
-            const newTime = prevTime - 1000;
-            localStorage.setItem(`testTime_${id}`, newTime.toString());
-            return newTime >= 0 ? newTime : 0;
-        });
+      setTime(prevTime => {
+        const newTime = prevTime - 1000;
+        localStorage.setItem(`testTime_${id}`, newTime.toString());
+        if (newTime <= 0) {
+          handleSubmit(); // Auto-submit when time reaches 00:00:00
+          clearInterval(intervalId); // Stop the timer
+          return 0; // Set time to 0
+        }
+        return newTime;
+      });
     };
 
     intervalId = setInterval(tick, 1000);
