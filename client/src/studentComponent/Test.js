@@ -20,7 +20,7 @@ export default function Test() {
     const userId = typeof user === 'object' ? user.id : user;
     const [time, setTime] = useState(() => {
       const storedTime = localStorage.getItem(`testTime_${id}`);
-      return storedTime ? parseInt(storedTime, 10) : 0;
+      return storedTime ? parseInt(storedTime, 10) : 1;
   });
   const [testName,setTestName]=useState("");
 
